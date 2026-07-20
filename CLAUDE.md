@@ -92,9 +92,11 @@ Rules:
 
 ### 8. No Borders
 - No borders on any element, anywhere — no `border`, `border-*`, `divide-*`, or ring utilities used as visual borders. Use spacing, background color contrast, or shadows to separate elements instead.
+- **Exception: `/admin` routes.** The admin dashboard (`app/admin/**`, its components under `components/common/AdminSidebar.tsx`, `AdminLoginForm.tsx`, `AdminLoginPageContent.tsx`, `AdminDashboardShell.tsx`, `AdminDashboardGuard.tsx`, `SidebarNavItem.tsx`, and `components/common/stats/**`) intentionally uses hairline `border-primary-brown/12`-style borders plus real shadows (`shadow-lg`/`shadow-xl` etc.) for card and panel separation, since the flat/tinted-background approach used on the public site read as low contrast on data heavy admin screens. This exception does not extend to any public marketing page.
 
 ### 9. No Border Radius
 - No border radius on any element, anywhere — no `rounded`, `rounded-*` utilities. All corners are sharp/square.
+- **Exception: `/admin` routes** (same scope as the borders exception above) — cards, buttons, and panels there use `rounded-lg`/`rounded-2xl` for the more modern, data dashboard treatment.
 
 ### 10. No Pulsing Dot Tags
 - No pulsing/animated dot indicators (e.g. the common "live" or "notification" pulsing dot badge) on any section of the site.

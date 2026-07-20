@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
+import { Suspense } from "react";
 import "./globals.css";
 import { PageScrollbar } from "@/components/common/PageScrollbar";
+import { SiteVisitTracker } from "@/components/common/SiteVisitTracker";
 
 export const metadata: Metadata = {
   title: "Blissful Escapes | Luxury Travel, Personally Planned",
@@ -24,6 +26,9 @@ export default function RootLayout({
         />
         {children}
         <PageScrollbar />
+        <Suspense fallback={null}>
+          <SiteVisitTracker />
+        </Suspense>
       </body>
     </html>
   );

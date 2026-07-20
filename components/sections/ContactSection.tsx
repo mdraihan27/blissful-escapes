@@ -11,6 +11,8 @@ import { Select } from "@/components/ui/Select";
 import { Input } from "@/components/ui/Input";
 import { Button } from "@/components/ui/Button";
 import { useTripPlan } from "@/lib/TripPlanContext";
+import { submitTripEnquiry } from "@/lib/tripEnquiryApi";
+import { getClientEnvironment } from "@/lib/clientEnvironment";
 
 const destinationOptions = [
   { value: "", label: "Select a region" },
@@ -70,6 +72,16 @@ export function ContactSection() {
 
     setShowPrompt(false);
     setSubmitted(true);
+
+    // Fire and forget: the confirmation screen shows immediately either
+    // way, submission failures are just logged rather than blocking the UI.
+    submitTripEnquiry({
+      ...form,
+      path: window.location.pathname + window.location.search,
+      ...getClientEnvironment(),
+    }).catch((error) => {
+      console.error("Failed to submit trip enquiry:", error);
+    });
   };
 
   if (submitted) {
