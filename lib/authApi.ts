@@ -1,4 +1,5 @@
-import { API_URL } from "@/lib/apiConfig";
+import { apiFetch } from "@/lib/apiConfig";
+import { setToken, clearToken } from "@/lib/authToken";
 
 export interface AdminUser {
   _id: string;
@@ -20,10 +21,9 @@ async function parseJson(response: Response) {
 }
 
 export async function login(userId: string, password: string): Promise<AdminUser> {
-  const response = await fetch(`${API_URL}/auth/login`, {
+  const response = await apiFetch("/auth/login", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    credentials: "include",
     body: JSON.stringify({ userId, password }),
   });
 
@@ -33,14 +33,17 @@ export async function login(userId: string, password: string): Promise<AdminUser
     throw new AuthApiError(body?.message ?? "Unable to sign in. Please try again.");
   }
 
+  if (body?.data?.accessToken) {
+    setToken(body.data.accessToken);
+  }
+
   return body.data.user as AdminUser;
 }
 
 export async function requestLoginLink(userId: string): Promise<void> {
-  const response = await fetch(`${API_URL}/auth/forgot-password`, {
+  const response = await apiFetch("/auth/forgot-password", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    credentials: "include",
     body: JSON.stringify({ userId }),
   });
 
@@ -52,10 +55,9 @@ export async function requestLoginLink(userId: string): Promise<void> {
 }
 
 export async function loginWithToken(token: string): Promise<AdminUser> {
-  const response = await fetch(`${API_URL}/auth/magic-login`, {
+  const response = await apiFetch("/auth/magic-login", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    credentials: "include",
     body: JSON.stringify({ token }),
   });
 
@@ -65,21 +67,24 @@ export async function loginWithToken(token: string): Promise<AdminUser> {
     throw new AuthApiError(body?.message ?? "This login link is invalid or has expired.");
   }
 
+  if (body?.data?.accessToken) {
+    setToken(body.data.accessToken);
+  }
+
   return body.data.user as AdminUser;
 }
 
 export async function logout(): Promise<void> {
-  await fetch(`${API_URL}/auth/logout`, {
-    method: "POST",
-    credentials: "include",
-  });
+  try {
+    await apiFetch("/auth/logout", { method: "POST" });
+  } finally {
+    // Always clear locally, even if the network call fails.
+    clearToken();
+  }
 }
 
 export async function getCurrentUser(): Promise<AdminUser | null> {
-  const response = await fetch(`${API_URL}/auth/me`, {
-    method: "GET",
-    credentials: "include",
-  });
+  const response = await apiFetch("/auth/me", { method: "GET" });
 
   if (!response.ok) return null;
 

@@ -1,4 +1,4 @@
-import { API_URL } from "@/lib/apiConfig";
+import { apiFetch } from "@/lib/apiConfig";
 
 export type StatsRange = "7d" | "30d" | "90d";
 
@@ -42,10 +42,7 @@ export interface LocationBreakdown {
 export class StatsApiError extends Error {}
 
 async function getJson<T>(path: string): Promise<T> {
-  const response = await fetch(`${API_URL}${path}`, {
-    method: "GET",
-    credentials: "include",
-  });
+  const response = await apiFetch(path, { method: "GET" });
 
   if (!response.ok) {
     const body = await response.json().catch(() => null);

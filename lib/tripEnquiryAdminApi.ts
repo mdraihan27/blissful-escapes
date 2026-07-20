@@ -1,4 +1,4 @@
-import { API_URL } from "@/lib/apiConfig";
+import { apiFetch } from "@/lib/apiConfig";
 
 export interface TripEnquiryRecord {
   _id: string;
@@ -38,9 +38,8 @@ export interface TripEnquiryListResult {
 export class TripEnquiryApiError extends Error {}
 
 export async function listTripEnquiries(page: number, limit = 10): Promise<TripEnquiryListResult> {
-  const response = await fetch(`${API_URL}/trip-enquiries?page=${page}&limit=${limit}`, {
+  const response = await apiFetch(`/trip-enquiries?page=${page}&limit=${limit}`, {
     method: "GET",
-    credentials: "include",
   });
 
   if (!response.ok) {
@@ -53,9 +52,8 @@ export async function listTripEnquiries(page: number, limit = 10): Promise<TripE
 }
 
 export async function getUnreadCount(): Promise<number> {
-  const response = await fetch(`${API_URL}/trip-enquiries/unread-count`, {
+  const response = await apiFetch("/trip-enquiries/unread-count", {
     method: "GET",
-    credentials: "include",
   });
 
   if (!response.ok) {
@@ -70,10 +68,9 @@ export async function getUnreadCount(): Promise<number> {
 export async function markEnquiriesRead(ids: string[]): Promise<void> {
   if (ids.length === 0) return;
 
-  const response = await fetch(`${API_URL}/trip-enquiries/mark-read`, {
+  const response = await apiFetch("/trip-enquiries/mark-read", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    credentials: "include",
     body: JSON.stringify({ ids }),
   });
 

@@ -1,4 +1,4 @@
-import { API_URL } from "@/lib/apiConfig";
+import { apiFetch } from "@/lib/apiConfig";
 
 export interface AdminUserRecord {
   _id: string;
@@ -20,10 +20,7 @@ async function parseJson(response: Response) {
 }
 
 export async function listUsers(): Promise<AdminUserRecord[]> {
-  const response = await fetch(`${API_URL}/users`, {
-    method: "GET",
-    credentials: "include",
-  });
+  const response = await apiFetch("/users", { method: "GET" });
 
   const body = await parseJson(response);
   if (!response.ok) {
@@ -34,10 +31,9 @@ export async function listUsers(): Promise<AdminUserRecord[]> {
 }
 
 export async function createUser(userId: string, password: string): Promise<AdminUserRecord> {
-  const response = await fetch(`${API_URL}/users`, {
+  const response = await apiFetch("/users", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    credentials: "include",
     body: JSON.stringify({ userId, password }),
   });
 
