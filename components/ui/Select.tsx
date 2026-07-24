@@ -13,9 +13,9 @@ export interface SelectProps extends SelectHTMLAttributes<HTMLSelectElement> {
 export function Select({ options, tone = "default", className = "", ...rest }: Readonly<SelectProps>) {
   const fieldClasses =
     tone === "onImage"
-      ? "bg-white/12 text-white shadow-[inset_0_-2px_0_0_rgba(255,255,255,0.35)] focus:shadow-[inset_0_-2px_0_0_rgba(255,255,255,1)]"
-      : "bg-primary-brown/4 text-primary-brown shadow-[inset_0_-2px_0_0_rgba(55,34,34,0.15)] focus:shadow-[inset_0_-2px_0_0_rgba(55,34,34,1)]";
-  const arrowClasses = tone === "onImage" ? "fill-white/70" : "fill-primary-brown/60";
+      ? "bg-primary-navy/20 text-white shadow-[inset_0_-2px_0_0_#70a7bf] focus:shadow-[inset_0_-2px_0_0_#ffffff]"
+      : "bg-primary-cream text-primary-navy shadow-[inset_0_-2px_0_0_#70a7bf] focus:shadow-[inset_0_-2px_0_0_#274957]";
+  const arrowClasses = tone === "onImage" ? "fill-white" : "fill-primary-sky";
 
   return (
     <div className="relative">
@@ -24,7 +24,7 @@ export function Select({ options, tone = "default", className = "", ...rest }: R
         {...rest}
       >
         {options.map((option) => (
-          <option key={option.value} value={option.value} className="text-primary-brown">
+          <option key={option.value} value={option.value} className="bg-white text-primary-navy">
             {option.label}
           </option>
         ))}

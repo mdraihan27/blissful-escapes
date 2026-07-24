@@ -88,11 +88,11 @@ export function MessagesPageContent() {
     <main className="relative min-h-dvh overflow-hidden px-4 py-10 xs:px-5 sm:px-6 sm:py-12 lg:px-10">
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute -top-40 right-0 h-96 w-96 rounded-full bg-primary-pink/15 blur-3xl"
+        className="pointer-events-none absolute -top-40 right-0 h-96 w-96 rounded-full bg-primary-sky/15 blur-3xl"
       />
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute top-1/2 -left-40 h-96 w-96 rounded-full bg-primary-beige/15 blur-3xl"
+        className="pointer-events-none absolute top-1/2 -left-40 h-96 w-96 rounded-full bg-primary-gold/15 blur-3xl"
       />
 
       <motion.div
@@ -101,11 +101,11 @@ export function MessagesPageContent() {
         transition={{ duration: 0.5, ease: "easeOut" }}
         className="relative mb-8 sm:mb-10"
       >
-        <p className="text-xs font-semibold uppercase tracking-[0.2em] text-primary-brown/75">Enquiries</p>
+        <p className="text-xs font-semibold uppercase tracking-[0.2em] text-primary-sky">Enquiries</p>
         <Heading as="h1" size="sm" className="mt-2">
           Messages
         </Heading>
-        <Text size="sm" className="mt-2 max-w-xl text-primary-brown/75">
+        <Text size="sm" className="mt-2 max-w-xl text-primary-sky">
           {total > 0
             ? `${total.toLocaleString()} traveller${total === 1 ? "" : "s"} have reached out so far.`
             : "Trip enquiries from the site will show up here."}
@@ -123,8 +123,8 @@ export function MessagesPageContent() {
 
       <div className={`relative flex flex-col gap-4 transition-opacity duration-300 ${isLoading ? "opacity-50" : "opacity-100"}`}>
         {!isLoading && enquiries.length === 0 && !error && (
-          <div className="rounded-2xl border border-primary-brown/20 bg-primary-brown/[0.035] p-10 text-center shadow-lg shadow-primary-brown/10">
-            <Text size="base" className="text-primary-brown/75">
+          <div className="rounded-2xl border border-primary-navy/20 bg-primary-navy/[0.035] p-10 text-center shadow-lg shadow-primary-navy/10">
+            <Text size="base" className="text-primary-sky">
               No messages yet.
             </Text>
           </div>
@@ -151,18 +151,18 @@ export function MessagesPageContent() {
             type="button"
             disabled={page <= 1}
             onClick={() => handlePageChange(page - 1)}
-            className="cursor-pointer rounded-lg border border-primary-brown/15 bg-white px-4 py-2 text-sm font-semibold text-primary-brown transition-colors duration-200 hover:bg-primary-brown/5 disabled:cursor-not-allowed disabled:opacity-40 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-brown"
+            className="cursor-pointer rounded-lg border border-primary-navy/15 bg-white px-4 py-2 text-sm font-semibold text-primary-navy transition-colors duration-200 hover:bg-primary-navy/5 disabled:cursor-not-allowed disabled:opacity-40 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-navy"
           >
             Previous
           </button>
-          <span className="px-3 text-sm font-medium text-primary-brown/70">
+          <span className="px-3 text-sm font-medium text-primary-sky">
             Page {page} of {totalPages}
           </span>
           <button
             type="button"
             disabled={page >= totalPages}
             onClick={() => handlePageChange(page + 1)}
-            className="cursor-pointer rounded-lg border border-primary-brown/15 bg-white px-4 py-2 text-sm font-semibold text-primary-brown transition-colors duration-200 hover:bg-primary-brown/5 disabled:cursor-not-allowed disabled:opacity-40 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-brown"
+            className="cursor-pointer rounded-lg border border-primary-navy/15 bg-white px-4 py-2 text-sm font-semibold text-primary-navy transition-colors duration-200 hover:bg-primary-navy/5 disabled:cursor-not-allowed disabled:opacity-40 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-navy"
           >
             Next
           </button>

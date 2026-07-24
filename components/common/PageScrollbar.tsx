@@ -95,7 +95,7 @@ export function PageScrollbar() {
           isDraggingRef.current = true;
           scrollToFraction(event.clientY);
         }}
-        className="absolute right-1 w-1.5 cursor-grab bg-primary-pink/70 transition-colors duration-200 hover:bg-primary-pink active:cursor-grabbing active:bg-primary-pink"
+        className="absolute right-1 w-1.5 cursor-grab bg-primary-sky transition-colors duration-200 hover:bg-primary-navy active:cursor-grabbing active:bg-primary-navy"
         style={{ height: thumbHeight, top: thumbTop }}
       />
     </div>

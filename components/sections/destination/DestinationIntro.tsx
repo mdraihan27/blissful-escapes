@@ -13,7 +13,7 @@ export function DestinationIntro({ intro, countries, bestTime }: Readonly<Destin
   const [lead, ...rest] = intro;
 
   return (
-    <section className="bg-primary-brown py-24 sm:py-32 lg:py-40">
+    <section className="bg-primary-navy py-24 sm:py-32 lg:py-40">
       <Container>
         {/* Oversized lead statement */}
         <motion.p
@@ -35,7 +35,7 @@ export function DestinationIntro({ intro, countries, bestTime }: Readonly<Destin
             className="space-y-6"
           >
             {rest.map((paragraph) => (
-              <p key={paragraph.slice(0, 24)} className="text-lg leading-relaxed text-white/70">
+              <p key={paragraph.slice(0, 24)} className="text-lg leading-relaxed text-primary-cream">
                 {paragraph}
               </p>
             ))}
@@ -49,7 +49,7 @@ export function DestinationIntro({ intro, countries, bestTime }: Readonly<Destin
             className="flex flex-col gap-8"
           >
             <div>
-              <p className="text-xs font-semibold uppercase tracking-[0.25em] text-primary-beige">
+              <p className="text-xs font-semibold uppercase tracking-[0.25em] text-primary-gold">
                 Where we plan
               </p>
               <ul className="mt-4 flex flex-wrap gap-x-5 gap-y-2">
@@ -61,13 +61,13 @@ export function DestinationIntro({ intro, countries, bestTime }: Readonly<Destin
               </ul>
             </div>
 
-            <div className="h-px w-full bg-white/15" />
+            <div className="h-px w-full bg-primary-sky" />
 
             <div>
-              <p className="text-xs font-semibold uppercase tracking-[0.25em] text-primary-beige">
+              <p className="text-xs font-semibold uppercase tracking-[0.25em] text-primary-gold">
                 Best time to go
               </p>
-              <p className="mt-4 text-lg leading-relaxed text-white/80">{bestTime}</p>
+              <p className="mt-4 text-lg leading-relaxed text-primary-cream">{bestTime}</p>
             </div>
           </motion.div>
         </div>

@@ -27,7 +27,7 @@ export function HeroCarousel() {
   return (
     <div className="absolute inset-0 overflow-hidden">
       <CrossfadeBackground src={slides[activeIndex].src} priority />
-      <div className="absolute inset-0 bg-gradient-to-t from-primary-brown/90 via-primary-brown/30 to-primary-brown/10" />
+      <div className="absolute inset-0 bg-gradient-to-t from-primary-navy via-primary-navy/40 to-transparent" />
     </div>
   );
 }

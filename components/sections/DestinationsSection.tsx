@@ -18,13 +18,14 @@ export function DestinationsSection() {
     <section id="destinations" className="py-14 sm:py-16.75 lg:py-22.5">
       <Container>
         <div className="mb-12 sm:mb-16">
-          <p className="mb-4 text-sm font-semibold uppercase tracking-[0.2em] text-primary-brown/70">
+          <p className="relative mb-4 inline-block pb-2 text-sm font-semibold uppercase tracking-[0.2em] text-primary-sky">
             Where in the world?
+            <span className="absolute bottom-0 left-0 h-px w-full bg-primary-gold" aria-hidden="true" />
           </p>
           <Heading as="h2" size="lg">
             Four regions, known inside out
           </Heading>
-          <Text size="lg" className="mt-5 max-w-2xl text-primary-brown/70">
+          <Text size="lg" className="mt-5 max-w-2xl text-primary-navy">
             We plan across a handful of places we know really well, rather than offering everywhere and knowing nowhere properly. Hover a region to get a feel for it, then click through to see how we would shape the trip.
           </Text>
         </div>
@@ -36,7 +37,7 @@ export function DestinationsSection() {
               <Link
                 href={`/destinations/${active.slug}`}
                 aria-label={`Explore ${active.name}`}
-                className="group relative block aspect-4/5 overflow-hidden focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary-brown"
+                className="group relative block aspect-4/5 overflow-hidden focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary-navy"
               >
                 <AnimatePresence>
                   <motion.div
@@ -57,7 +58,7 @@ export function DestinationsSection() {
                   </motion.div>
                 </AnimatePresence>
 
-                <div className="absolute inset-0 bg-gradient-to-t from-primary-brown/85 via-primary-brown/15 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-primary-navy via-primary-navy/40 to-transparent" />
 
                 <div className="absolute bottom-0 left-0 right-0 p-8">
                   <motion.div
@@ -66,7 +67,7 @@ export function DestinationsSection() {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5, delay: 0.1, ease: "easeOut" }}
                   >
-                    <p className="text-xs font-semibold uppercase tracking-[0.25em] text-primary-beige">
+                    <p className="text-xs font-semibold uppercase tracking-[0.25em] text-primary-gold">
                       {active.region}
                     </p>
                     <p className="mt-3 text-4xl font-semibold italic tracking-tight text-white">

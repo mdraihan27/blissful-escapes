@@ -17,7 +17,7 @@ export function AdminDashboardGuard({ children }: Readonly<{ children: ReactNode
   if (isLoading || !user) {
     return (
       <main className="flex min-h-dvh items-center justify-center bg-white">
-        <p className="text-sm uppercase tracking-[0.2em] text-primary-brown/75">Loading...</p>
+        <p className="text-sm uppercase tracking-[0.2em] text-primary-sky">Loading...</p>
       </main>
     );
   }

@@ -25,7 +25,7 @@ export function HolidayTypeCarouselSlide({
         className="object-cover"
         priority={isFirst}
       />
-      <div className="absolute inset-0 bg-gradient-to-t from-primary-brown/85 via-primary-brown/15 to-transparent" />
+      <div className="absolute inset-0 bg-gradient-to-t from-primary-navy via-primary-navy/40 to-transparent" />
       <span className="absolute bottom-5 left-4 right-4 text-left text-lg font-semibold uppercase tracking-wide text-white sm:text-xl">
         {label}
       </span>

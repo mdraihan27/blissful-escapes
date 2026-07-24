@@ -29,8 +29,8 @@ export function ExperiencePanel({
   */
   const gradient =
     align === "right"
-      ? "bg-gradient-to-t from-primary-brown/90 via-primary-brown/45 to-primary-brown/10 sm:bg-gradient-to-l sm:from-primary-brown/90 sm:via-primary-brown/40 sm:to-transparent"
-      : "bg-gradient-to-t from-primary-brown/90 via-primary-brown/45 to-primary-brown/10 sm:bg-gradient-to-r sm:from-primary-brown/90 sm:via-primary-brown/40 sm:to-transparent";
+      ? "bg-gradient-to-t from-primary-navy via-primary-navy/70 to-transparent sm:bg-gradient-to-l sm:from-primary-navy sm:via-primary-navy/60 sm:to-transparent"
+      : "bg-gradient-to-t from-primary-navy via-primary-navy/70 to-transparent sm:bg-gradient-to-r sm:from-primary-navy sm:via-primary-navy/60 sm:to-transparent";
 
   return (
     <section className="relative flex h-dvh min-h-150 items-end overflow-hidden sm:items-center">
@@ -45,13 +45,13 @@ export function ExperiencePanel({
           transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
           className={`flex max-w-xl flex-col ${alignSelf}`}
         >
-          <span className="text-5xl font-semibold italic leading-none text-primary-beige/90 xs:text-6xl sm:text-7xl lg:text-8xl">
+          <span className="text-5xl font-semibold italic leading-none text-primary-gold xs:text-6xl sm:text-7xl lg:text-8xl">
             {String(index).padStart(2, "0")}
           </span>
           <h3 className="mt-5 text-2xl font-semibold leading-tight text-white xs:text-3xl sm:mt-6 sm:text-4xl lg:text-5xl">
             {title}
           </h3>
-          <p className="mt-4 text-base leading-relaxed text-white/80 xs:text-lg sm:mt-5 sm:text-xl">{description}</p>
+          <p className="mt-4 text-base leading-relaxed text-primary-cream xs:text-lg sm:mt-5 sm:text-xl">{description}</p>
         </motion.div>
       </Container>
     </section>

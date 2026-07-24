@@ -32,7 +32,7 @@ export function OtherDestinations({ currentSlug }: Readonly<OtherDestinationsPro
             >
               <Link
                 href={`/destinations/${destination.slug}`}
-                className="group relative block aspect-4/5 overflow-hidden focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-brown"
+                className="group relative block aspect-4/5 overflow-hidden focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-navy"
                 aria-label={`Explore ${destination.name}`}
               >
                 <Image
@@ -42,10 +42,10 @@ export function OtherDestinations({ currentSlug }: Readonly<OtherDestinationsPro
                   sizes="(max-width: 640px) 100vw, 33vw"
                   className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-primary-brown/85 via-primary-brown/20 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-primary-navy via-primary-navy/40 to-transparent" />
                 <div className="absolute bottom-0 left-0 right-0 p-5 sm:p-6">
                   <p className="text-xl font-semibold text-white sm:text-2xl">{destination.name}</p>
-                  <p className="mt-1 text-sm text-white/70">{destination.region}</p>
+                  <p className="mt-1 text-sm text-primary-cream">{destination.region}</p>
                 </div>
               </Link>
             </motion.div>

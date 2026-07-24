@@ -17,8 +17,13 @@ export function TestimonialsSection() {
   const [setWidth, setSetWidth] = useState(0);
   const [isDragging, setIsDragging] = useState(false);
   const [isPaused, setIsPaused] = useState(false);
+  const [isMounted, setIsMounted] = useState(false);
   const shouldReduceMotion = useReducedMotion();
   const x = useMotionValue(0);
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
 
   useEffect(() => {
     const track = trackRef.current;
@@ -96,8 +101,9 @@ export function TestimonialsSection() {
     >
       <Container>
         <div className="mb-12 sm:mb-16">
-          <p className="mb-4 text-sm font-semibold uppercase tracking-[0.2em] text-primary-brown/70">
+          <p className="relative mb-4 inline-block pb-2 text-sm font-semibold uppercase tracking-[0.2em] text-primary-sky">
             Happy customers
+            <span className="absolute bottom-0 left-0 h-px w-full bg-primary-gold" aria-hidden="true" />
           </p>
           <Heading as="h2" size="lg">
             The trips they came home talking about
@@ -109,7 +115,7 @@ export function TestimonialsSection() {
       <div className="relative overflow-hidden">
         <motion.div
           ref={trackRef}
-          drag={shouldReduceMotion ? false : "x"}
+          drag={isMounted && !shouldReduceMotion ? "x" : false}
           dragMomentum={false}
           onDragStart={() => {
             clearTimeout(resumeTimeoutRef.current);

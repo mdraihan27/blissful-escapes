@@ -121,21 +121,21 @@ export function LocationsPieChart({
   const hovered = wedges.find((w) => w.label === hoverKey) ?? null;
 
   return (
-    <div className="relative overflow-hidden rounded-2xl border border-primary-brown/20 bg-primary-brown/[0.035] p-5 shadow-lg shadow-primary-brown/10 sm:p-7">
+    <div className="relative overflow-hidden rounded-2xl border border-primary-navy/20 bg-primary-navy/[0.035] p-5 shadow-lg shadow-primary-navy/10 sm:p-7">
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute -bottom-24 -right-24 h-56 w-56 rounded-full bg-primary-pink/20 blur-3xl"
+        className="pointer-events-none absolute -bottom-24 -right-24 h-56 w-56 rounded-full bg-primary-sky/20 blur-3xl"
       />
 
       <div className="relative flex flex-col gap-1">
-        <p className="text-xs font-semibold uppercase tracking-[0.2em] text-primary-brown/75">Critical</p>
+        <p className="text-xs font-semibold uppercase tracking-[0.2em] text-primary-sky">Critical</p>
         <div className="flex flex-col gap-1 sm:flex-row sm:items-baseline sm:justify-between">
-          <h2 className="text-2xl font-semibold text-primary-brown sm:text-3xl">Where visitors come from</h2>
+          <h2 className="text-2xl font-semibold text-primary-navy sm:text-3xl">Where visitors come from</h2>
           {country && (
             <button
               type="button"
               onClick={onClearCountry}
-              className="inline-flex w-fit cursor-pointer items-center gap-1.5 rounded-lg border border-primary-brown/15 bg-primary-brown/5 px-3 py-1.5 text-xs font-semibold text-primary-brown transition-colors duration-200 hover:bg-primary-brown/10 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-brown"
+              className="inline-flex w-fit cursor-pointer items-center gap-1.5 rounded-lg border border-primary-navy/15 bg-primary-navy/5 px-3 py-1.5 text-xs font-semibold text-primary-navy transition-colors duration-200 hover:bg-primary-navy/10 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-navy"
             >
               <svg viewBox="0 0 16 16" aria-hidden="true" className="h-3 w-3 fill-none stroke-current">
                 <path d="M11 3L5 8L11 13" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
@@ -144,7 +144,7 @@ export function LocationsPieChart({
             </button>
           )}
         </div>
-        <p className="text-sm text-primary-brown/75">
+        <p className="text-sm text-primary-sky">
           {scope === "city" ? `Cities in ${country}` : "By country"}, based on visitor IP address
         </p>
       </div>
@@ -158,7 +158,7 @@ export function LocationsPieChart({
         <div className="relative mx-auto">
           {total === 0 ? (
             <div className="flex h-[240px] w-[240px] items-center justify-center">
-              <p className="text-center text-sm text-primary-brown/75">No location data yet</p>
+              <p className="text-center text-sm text-primary-sky">No location data yet</p>
             </div>
           ) : (
             <svg
@@ -207,7 +207,7 @@ export function LocationsPieChart({
                 x={CENTER}
                 y={CENTER - 6}
                 textAnchor="middle"
-                className="fill-primary-brown text-xl font-semibold"
+                className="fill-primary-navy text-xl font-semibold"
               >
                 {total.toLocaleString()}
               </text>
@@ -215,7 +215,7 @@ export function LocationsPieChart({
                 x={CENTER}
                 y={CENTER + 14}
                 textAnchor="middle"
-                className="fill-primary-brown/75 text-[10px] uppercase tracking-[0.15em]"
+                className="fill-primary-sky text-[10px] uppercase tracking-[0.15em]"
               >
                 visits
               </text>
@@ -223,8 +223,8 @@ export function LocationsPieChart({
           )}
 
           {hovered && (
-            <div className="pointer-events-none absolute left-1/2 top-0 -translate-x-1/2 -translate-y-[calc(100%+8px)] whitespace-nowrap rounded-lg border border-white/10 bg-primary-brown px-3 py-2 text-white shadow-xl shadow-primary-brown/40">
-              <p className="text-[10px] uppercase tracking-[0.15em] text-white/60">{hovered.label}</p>
+            <div className="pointer-events-none absolute left-1/2 top-0 -translate-x-1/2 -translate-y-[calc(100%+8px)] whitespace-nowrap rounded-lg bg-primary-navy px-3 py-2 text-white shadow-xl shadow-primary-navy/40">
+              <p className="text-[10px] uppercase tracking-[0.15em] text-primary-sky">{hovered.label}</p>
               <p className="text-sm font-semibold">
                 {hovered.count.toLocaleString()} visits &middot; {(hovered.fraction * 100).toFixed(1)}%
               </p>
@@ -244,17 +244,17 @@ export function LocationsPieChart({
                   onClick={() => isCountryScope && onSelectCountry(wedge.label)}
                   onPointerEnter={() => setHoverKey(wedge.label)}
                   onPointerLeave={() => setHoverKey(null)}
-                  className={`flex w-full items-center gap-3 rounded-lg border px-3 py-2 text-left transition-colors duration-150 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-brown ${
-                    hoverKey === wedge.label ? "border-primary-brown/20 bg-primary-brown/5" : "border-transparent"
-                  } ${isCountryScope ? "cursor-pointer hover:border-primary-brown/15 hover:bg-primary-brown/5" : ""}`}
+                  className={`flex w-full items-center gap-3 rounded-lg border px-3 py-2 text-left transition-colors duration-150 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-navy ${
+                    hoverKey === wedge.label ? "border-primary-navy/20 bg-primary-navy/5" : "border-transparent"
+                  } ${isCountryScope ? "cursor-pointer hover:border-primary-navy/15 hover:bg-primary-navy/5" : ""}`}
                 >
                   <span
                     aria-hidden="true"
                     className="h-3 w-3 shrink-0 rounded-full"
                     style={{ backgroundColor: wedge.color }}
                   />
-                  <span className="flex-1 truncate text-sm font-medium text-primary-brown">{wedge.label}</span>
-                  <span className="text-sm font-semibold text-primary-brown/70">
+                  <span className="flex-1 truncate text-sm font-medium text-primary-navy">{wedge.label}</span>
+                  <span className="text-sm font-semibold text-primary-sky">
                     {(wedge.fraction * 100).toFixed(1)}%
                   </span>
                 </button>
@@ -264,16 +264,16 @@ export function LocationsPieChart({
         </ul>
 
         {/* Country filter */}
-        <div className="w-full rounded-xl border border-primary-brown/20 bg-primary-brown/5 p-4 lg:w-56">
-          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-primary-brown/75">Filter by country</p>
+        <div className="w-full rounded-xl border border-primary-navy/20 bg-primary-navy/5 p-4 lg:w-56">
+          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-primary-sky">Filter by country</p>
           <div className="mt-3 flex max-h-64 flex-col gap-1 overflow-auto">
             <button
               type="button"
               onClick={onClearCountry}
-              className={`cursor-pointer rounded-lg px-3 py-2 text-left text-sm font-medium transition-colors duration-150 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-brown ${
+              className={`cursor-pointer rounded-lg px-3 py-2 text-left text-sm font-medium transition-colors duration-150 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-navy ${
                 !country
-                  ? "bg-primary-brown text-white"
-                  : "text-primary-brown/70 hover:bg-primary-brown/10 hover:text-primary-brown"
+                  ? "bg-primary-navy text-white"
+                  : "text-primary-sky hover:bg-primary-navy/10 hover:text-primary-navy"
               }`}
             >
               All countries
@@ -283,10 +283,10 @@ export function LocationsPieChart({
                 key={option}
                 type="button"
                 onClick={() => onSelectCountry(option)}
-                className={`cursor-pointer truncate rounded-lg px-3 py-2 text-left text-sm font-medium transition-colors duration-150 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-brown ${
+                className={`cursor-pointer truncate rounded-lg px-3 py-2 text-left text-sm font-medium transition-colors duration-150 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-navy ${
                   country === option
-                    ? "bg-primary-brown text-white"
-                    : "text-primary-brown/70 hover:bg-primary-brown/10 hover:text-primary-brown"
+                    ? "bg-primary-navy text-white"
+                    : "text-primary-sky hover:bg-primary-navy/10 hover:text-primary-navy"
                 }`}
               >
                 {option}
@@ -300,17 +300,17 @@ export function LocationsPieChart({
         <button
           type="button"
           onClick={() => setShowTable((v) => !v)}
-          className="cursor-pointer text-xs font-semibold text-primary-brown/75 underline-offset-2 hover:text-primary-brown hover:underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-brown"
+          className="cursor-pointer text-xs font-semibold text-primary-sky underline-offset-2 hover:text-primary-navy hover:underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-navy"
         >
           {showTable ? "Hide data table" : "View as table"}
         </button>
       </div>
 
       {showTable && (
-        <div className="relative mt-3 max-h-64 overflow-auto rounded-lg border border-primary-brown/20">
+        <div className="relative mt-3 max-h-64 overflow-auto rounded-lg border border-primary-navy/20">
           <table className="w-full text-left text-sm">
             <thead>
-              <tr className="border-b border-primary-brown/20 bg-primary-brown/5 text-xs uppercase tracking-wide text-primary-brown/75">
+              <tr className="border-b border-primary-navy/20 bg-primary-navy/5 text-xs uppercase tracking-wide text-primary-sky">
                 <th className="px-3 py-2 font-semibold">{scope === "city" ? "City" : "Country"}</th>
                 <th className="px-3 py-2 font-semibold">Visits</th>
                 <th className="px-3 py-2 font-semibold">Share</th>
@@ -318,10 +318,10 @@ export function LocationsPieChart({
             </thead>
             <tbody>
               {wedges.map((wedge) => (
-                <tr key={wedge.label} className="border-b border-primary-brown/18 last:border-b-0">
-                  <td className="px-3 py-2 text-primary-brown/70">{wedge.label}</td>
-                  <td className="px-3 py-2 font-medium text-primary-brown">{wedge.count.toLocaleString()}</td>
-                  <td className="px-3 py-2 text-primary-brown/70">{(wedge.fraction * 100).toFixed(1)}%</td>
+                <tr key={wedge.label} className="border-b border-primary-navy/18 last:border-b-0">
+                  <td className="px-3 py-2 text-primary-sky">{wedge.label}</td>
+                  <td className="px-3 py-2 font-medium text-primary-navy">{wedge.count.toLocaleString()}</td>
+                  <td className="px-3 py-2 text-primary-sky">{(wedge.fraction * 100).toFixed(1)}%</td>
                 </tr>
               ))}
             </tbody>

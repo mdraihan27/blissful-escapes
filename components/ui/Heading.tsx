@@ -26,7 +26,7 @@ export function Heading({
 
   return (
     <Tag
-      className={`font-semibold tracking-tight text-primary-brown ${
+      className={`font-semibold tracking-tight text-primary-navy ${
         italic ? "italic" : ""
       } ${sizeClasses[size]} ${className}`}
     >

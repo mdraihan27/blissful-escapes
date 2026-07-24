@@ -13,9 +13,9 @@ export interface NavLinkProps {
 }
 
 export function NavLink({ href, label, tone = "brown", className = "", onNavigate }: Readonly<NavLinkProps>) {
-  const idleColor = tone === "brown" ? "text-primary-brown/80" : "text-white/80";
-  const hoverColor = tone === "brown" ? "hover:text-primary-brown" : "hover:text-white";
-  const underlineColor = tone === "brown" ? "bg-primary-brown" : "bg-primary-beige";
+  const idleColor = tone === "brown" ? "text-primary-navy" : "text-white";
+  const hoverColor = tone === "brown" ? "hover:text-primary-sky" : "hover:text-primary-gold";
+  const underlineColor = tone === "brown" ? "bg-primary-navy" : "bg-primary-gold";
 
   const handleClick = (event: MouseEvent<HTMLAnchorElement>) => {
     if (href.startsWith("#")) {
@@ -29,7 +29,7 @@ export function NavLink({ href, label, tone = "brown", className = "", onNavigat
     <Link
       href={href}
       onClick={handleClick}
-      className={`group relative inline-flex items-center py-1 text-sm font-medium tracking-wide transition-colors duration-200 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary-brown ${idleColor} ${hoverColor} ${className}`}
+      className={`group relative inline-flex items-center py-1 text-sm font-medium tracking-wide transition-colors duration-200 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary-navy ${idleColor} ${hoverColor} ${className}`}
     >
       {label}
       <span

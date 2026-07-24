@@ -11,8 +11,6 @@ import { Select } from "@/components/ui/Select";
 import { Input } from "@/components/ui/Input";
 import { Button } from "@/components/ui/Button";
 import { useTripPlan } from "@/lib/TripPlanContext";
-import { submitTripEnquiry } from "@/lib/tripEnquiryApi";
-import { getClientEnvironment } from "@/lib/clientEnvironment";
 
 const destinationOptions = [
   { value: "", label: "Select a region" },
@@ -29,8 +27,10 @@ interface FormState {
   name: string;
   email: string;
   phone: string;
-  when: string;
+  from: string;
   where: string;
+  when: string;
+  duration: string;
   message: string;
 }
 
@@ -38,8 +38,10 @@ const emptyForm: FormState = {
   name: "",
   email: "",
   phone: "",
-  when: "",
+  from: "",
   where: "",
+  when: "",
+  duration: "",
   message: "",
 };
 
@@ -53,8 +55,10 @@ export function ContactSection() {
     if (!plan) return;
     setForm((prev) => ({
       ...prev,
-      when: plan.when || prev.when,
+      from: plan.from || prev.from,
       where: plan.where || prev.where,
+      when: plan.when || prev.when,
+      duration: plan.duration || prev.duration,
     }));
     clearPlan();
   }, [plan, clearPlan]);
@@ -72,21 +76,11 @@ export function ContactSection() {
 
     setShowPrompt(false);
     setSubmitted(true);
-
-    // Fire and forget: the confirmation screen shows immediately either
-    // way, submission failures are just logged rather than blocking the UI.
-    submitTripEnquiry({
-      ...form,
-      path: window.location.pathname + window.location.search,
-      ...getClientEnvironment(),
-    }).catch((error) => {
-      console.error("Failed to submit trip enquiry:", error);
-    });
   };
 
   if (submitted) {
     return (
-      <section id="contact" className="py-14 sm:py-16.75 lg:py-22.5 bg-primary-pink/30">
+      <section id="contact" className="py-14 sm:py-16.75 lg:py-22.5 bg-primary-cream">
         <Container>
           <motion.div
             initial={{ opacity: 0, y: 16 }}
@@ -94,17 +88,17 @@ export function ContactSection() {
             transition={{ duration: 0.5 }}
             className="mx-auto max-w-2xl text-center"
           >
-            <div className="mb-6 inline-flex items-center justify-center bg-primary-pink/30 p-5">
-              <svg viewBox="0 0 24 24" aria-hidden="true" className="h-8 w-8 fill-none stroke-primary-brown">
+            <div className="mb-6 inline-flex items-center justify-center bg-white p-5">
+              <svg viewBox="0 0 24 24" aria-hidden="true" className="h-8 w-8 fill-none stroke-primary-navy">
                 <path d="M4 12L9 17L20 6" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
               </svg>
             </div>
             <Heading as="h2" size="md">
               Thanks, {form.name.split(" ")[0]}!
             </Heading>
-            <Text size="lg" className="mt-5 text-primary-brown/75">
+            <Text size="lg" className="mt-5 text-primary-navy">
               We have got your message and will be in touch within a day or two. In the meantime, if anything changes or you would rather just call, you can reach us on{" "}
-              <a href="tel:07789652136" className="font-semibold text-primary-brown underline-offset-2 hover:underline">
+              <a href="tel:07789652136" className="font-semibold text-primary-navy underline-offset-2 hover:underline">
                 07789 652 136
               </a>
               . Looking forward to hearing more about the trip you have in mind.
@@ -112,7 +106,7 @@ export function ContactSection() {
             <button
               type="button"
               onClick={() => { setSubmitted(false); setForm(emptyForm); }}
-              className="mt-8 cursor-pointer text-sm text-primary-brown/60 underline-offset-2 hover:text-primary-brown hover:underline focus-visible:outline-2 focus-visible:outline-primary-brown"
+              className="mt-8 cursor-pointer text-sm text-primary-sky underline-offset-2 hover:text-primary-navy hover:underline focus-visible:outline-2 focus-visible:outline-primary-navy"
             >
               Send another enquiry
             </button>
@@ -123,7 +117,7 @@ export function ContactSection() {
   }
 
   return (
-    <section id="contact" className="py-14 sm:py-16.75 lg:py-22.5 bg-primary-pink/30">
+    <section id="contact" className="py-14 sm:py-16.75 lg:py-22.5 bg-primary-cream">
       <Container>
         <div className="mx-auto max-w-3xl">
           <motion.div
@@ -132,13 +126,14 @@ export function ContactSection() {
             viewport={{ once: true }}
             transition={{ duration: 0.55, ease: "easeOut" }}
           >
-            <p className="mb-4 text-sm font-semibold uppercase tracking-[0.2em] text-primary-brown/70">
+            <p className="relative mb-4 inline-block pb-2 text-sm font-semibold uppercase tracking-[0.2em] text-primary-sky">
               Ready when you are
+              <span className="absolute bottom-0 left-0 h-px w-full bg-primary-gold" aria-hidden="true" />
             </p>
             <Heading as="h2" size="lg">
               Let us start planning your trip
             </Heading>
-            <Text size="lg" className="mt-5 text-primary-brown/70">
+            <Text size="lg" className="mt-5 text-primary-navy">
               Tell us a little about what you have in mind. There is no commitment here, just a conversation about where you want to go and what matters most to you. We will come back with ideas within 48 hours.
             </Text>
           </motion.div>
@@ -188,7 +183,19 @@ export function ContactSection() {
               />
             </FormField>
 
-            <FormField id="contact-where" label="Where do you want to go?">
+            <FormField id="contact-from" label="Traveling from">
+              <Input
+                id="contact-from"
+                name="from"
+                type="text"
+                autoComplete="address-level2"
+                placeholder="e.g. Manchester, UK"
+                value={form.from}
+                onChange={(e) => set("from")(e.target.value)}
+              />
+            </FormField>
+
+            <FormField id="contact-where" label="Destination">
               <Select
                 id="contact-where"
                 name="where"
@@ -198,17 +205,29 @@ export function ContactSection() {
               />
             </FormField>
 
-            <div className="sm:col-span-2">
-              <FormField id="contact-when" label="When are you thinking?">
-                <DatePicker
-                  id="contact-when"
-                  name="when"
-                  placeholder="e.g. next spring, or June 2027"
-                  value={form.when}
-                  onChange={set("when")}
-                />
-              </FormField>
-            </div>
+            <FormField id="contact-when" label="Departure date">
+              <DatePicker
+                id="contact-when"
+                name="when"
+                placeholder="e.g. next spring, or June 2027"
+                value={form.when}
+                onChange={set("when")}
+              />
+            </FormField>
+
+            <FormField id="contact-duration" label="Trip length (days)">
+              <Input
+                id="contact-duration"
+                name="duration"
+                type="number"
+                min={1}
+                max={365}
+                inputMode="numeric"
+                placeholder="e.g. 10"
+                value={form.duration}
+                onChange={(e) => set("duration")(e.target.value)}
+              />
+            </FormField>
 
             <div className="sm:col-span-2">
               <FormField id="contact-message" label="Anything else I should know?">
@@ -219,7 +238,7 @@ export function ContactSection() {
                   placeholder="Tell me a bit about the trip. Who you are travelling with, what matters most, any ideas you already have..."
                   value={form.message}
                   onChange={(e) => set("message")(e.target.value)}
-                  className="w-full bg-primary-brown/4 px-4 py-3.5 text-base text-primary-brown placeholder:text-primary-brown/40 outline-none transition-shadow duration-200 shadow-[inset_0_-2px_0_0_rgba(55,34,34,0.15)] focus:shadow-[inset_0_-2px_0_0_rgba(55,34,34,1)] resize-none"
+                  className="w-full bg-white px-4 py-3.5 text-base text-primary-navy placeholder:text-primary-sky outline-none transition-shadow duration-200 shadow-[inset_0_-2px_0_0_#70a7bf] focus:shadow-[inset_0_-2px_0_0_#274957] resize-none"
                 />
               </FormField>
             </div>
@@ -227,7 +246,7 @@ export function ContactSection() {
             <div className="flex flex-col gap-4 sm:col-span-2 sm:flex-row sm:items-start sm:justify-between">
               <p
                 aria-live="polite"
-                className={`text-sm text-primary-brown/70 transition-opacity duration-200 ${showPrompt ? "opacity-100" : "opacity-0"}`}
+                className={`text-sm text-primary-navy transition-opacity duration-200 ${showPrompt ? "opacity-100" : "opacity-0"}`}
               >
                 Could you pop in your name and email? I just need those two to get back to you.
               </p>
@@ -247,7 +266,7 @@ export function ContactSection() {
           >
             <a
               href="mailto:enquiries@blissfulescapes.co.uk"
-              className="flex items-center gap-2.5 text-sm text-primary-brown/70 transition-colors hover:text-primary-brown focus-visible:outline-2 focus-visible:outline-primary-brown"
+              className="flex items-center gap-2.5 text-sm text-primary-navy transition-colors hover:text-primary-sky focus-visible:outline-2 focus-visible:outline-primary-navy"
             >
               <svg viewBox="0 0 20 16" aria-hidden="true" className="h-4 w-5 fill-none stroke-current">
                 <path d="M1 1H19V15H1V1Z M1 1L10 9L19 1" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" />
@@ -256,14 +275,14 @@ export function ContactSection() {
             </a>
             <a
               href="tel:07789652136"
-              className="flex items-center gap-2.5 text-sm text-primary-brown/70 transition-colors hover:text-primary-brown focus-visible:outline-2 focus-visible:outline-primary-brown"
+              className="flex items-center gap-2.5 text-sm text-primary-navy transition-colors hover:text-primary-sky focus-visible:outline-2 focus-visible:outline-primary-navy"
             >
               <svg viewBox="0 0 18 18" aria-hidden="true" className="h-4 w-4 fill-none stroke-current">
                 <path d="M3 1H7L9 5L7 7C8.1 9.2 8.8 9.9 11 11L13 9L17 11V15C17 16.1 16.1 17 15 17C7.3 17 1 10.7 1 3C1 1.9 1.9 1 3 1Z" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" />
               </svg>
               07789 652 136
             </a>
-            <span className="flex items-center gap-2.5 text-sm text-primary-brown/70">
+            <span className="flex items-center gap-2.5 text-sm text-primary-navy">
               <svg viewBox="0 0 20 20" aria-hidden="true" className="h-4 w-4 fill-none stroke-current">
                 <circle cx="10" cy="8" r="3" strokeWidth="1.4" />
                 <path d="M3 8C3 4.13 6.13 1 10 1s7 3.13 7 7c0 5-7 12-7 12S3 13 3 8Z" strokeWidth="1.4" />

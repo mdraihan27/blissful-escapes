@@ -45,11 +45,11 @@ export function UsersPageContent() {
     <main className="relative min-h-dvh overflow-hidden px-4 py-10 xs:px-5 sm:px-6 sm:py-12 lg:px-10">
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute -top-40 right-0 h-96 w-96 rounded-full bg-primary-pink/15 blur-3xl"
+        className="pointer-events-none absolute -top-40 right-0 h-96 w-96 rounded-full bg-primary-sky/15 blur-3xl"
       />
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute top-1/2 -left-40 h-96 w-96 rounded-full bg-primary-beige/15 blur-3xl"
+        className="pointer-events-none absolute top-1/2 -left-40 h-96 w-96 rounded-full bg-primary-gold/15 blur-3xl"
       />
 
       <motion.div
@@ -59,11 +59,11 @@ export function UsersPageContent() {
         className="relative mb-8 flex flex-col gap-4 sm:mb-10 sm:flex-row sm:items-end sm:justify-between"
       >
         <div>
-          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-primary-brown/75">Access</p>
+          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-primary-sky">Access</p>
           <Heading as="h1" size="sm" className="mt-2">
             Users
           </Heading>
-          <Text size="sm" className="mt-2 max-w-xl text-primary-brown/75">
+          <Text size="sm" className="mt-2 max-w-xl text-primary-sky">
             Everyone who can sign in to this dashboard.
           </Text>
         </div>
@@ -93,8 +93,8 @@ export function UsersPageContent() {
             transition={{ duration: 0.3, ease: "easeOut" }}
             className="relative mb-6 overflow-hidden"
           >
-            <div className="rounded-2xl border border-primary-brown/20 bg-primary-brown/[0.035] p-5 shadow-lg shadow-primary-brown/10 sm:p-6">
-              <p className="mb-4 text-xs font-semibold uppercase tracking-[0.2em] text-primary-brown/75">
+            <div className="rounded-2xl border border-primary-navy/20 bg-primary-navy/[0.035] p-5 shadow-lg shadow-primary-navy/10 sm:p-6">
+              <p className="mb-4 text-xs font-semibold uppercase tracking-[0.2em] text-primary-sky">
                 New user
               </p>
               <CreateUserForm onCreated={handleCreated} onCancel={() => setShowCreate(false)} />

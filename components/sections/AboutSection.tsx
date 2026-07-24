@@ -29,21 +29,22 @@ export function AboutSection() {
             viewport={{ once: true, margin: "-80px" }}
             transition={{ duration: 0.6, ease: "easeOut" }}
           >
-            <p className="mb-4 text-sm font-semibold uppercase tracking-[0.2em] text-primary-brown/70">
+            <p className="relative mb-4 inline-block pb-2 text-sm font-semibold uppercase tracking-[0.2em] text-primary-sky">
               About Us
+              <span className="absolute bottom-0 left-0 h-px w-full bg-primary-gold" aria-hidden="true" />
             </p>
             <Heading as="h2" size="lg">
               We plan the holidays we would want to take ourselves.
             </Heading>
 
             <div className="mt-8 space-y-5">
-              <Text size="base" className="text-primary-brown/80 leading-relaxed">
+              <Text size="base" className="text-primary-navy leading-relaxed">
                 Blissful Escapes has been in travel for over 35 years, built on corporate client relations and a decade of personal travel consultancy based in Ormskirk, Lancashire. We started because we were tired of watching people settle for holidays that almost matched what they had in mind.
               </Text>
-              <Text size="base" className="text-primary-brown/80 leading-relaxed">
+              <Text size="base" className="text-primary-navy leading-relaxed">
                 Our speciality is honeymoons, safaris, and milestone trips, the ones where getting the details right really matters. We work with over 600 suppliers across luxury, adventure, wellbeing and fully inclusive stays, which means we can match you with the right hotel, the right route, and the right price without steering you toward whichever package pays the best commission.
               </Text>
-              <Text size="base" className="text-primary-brown/80 leading-relaxed">
+              <Text size="base" className="text-primary-navy leading-relaxed">
                 The trips we are most proud of are the ones clients come home talking about for years. That is what we are aiming for every time. Tell us what matters to you, and we will take care of the rest.
               </Text>
             </div>
@@ -52,21 +53,21 @@ export function AboutSection() {
             <div className="mt-10 flex flex-wrap gap-8">
               {credentials.map((cred) => (
                 <div key={cred.label}>
-                  <p className="text-3xl font-semibold text-primary-brown">{cred.value}</p>
-                  <p className="mt-1 text-sm text-primary-brown/60">{cred.label}</p>
+                  <p className="text-3xl font-semibold text-primary-navy">{cred.value}</p>
+                  <p className="mt-1 text-sm text-primary-sky">{cred.label}</p>
                 </div>
               ))}
             </div>
 
             {/* Trust badges */}
             <div className="mt-8 flex flex-wrap items-center gap-4">
-              <span className="bg-primary-pink/20 px-4 py-2 text-xs font-semibold uppercase tracking-widest text-primary-brown">
+              <span className="bg-primary-cream px-4 py-2 text-xs font-semibold uppercase tracking-widest text-primary-navy">
                 ABTA Protected
               </span>
-              <span className="bg-primary-pink/20 px-4 py-2 text-xs font-semibold uppercase tracking-widest text-primary-brown">
+              <span className="bg-primary-cream px-4 py-2 text-xs font-semibold uppercase tracking-widest text-primary-navy">
                 ATOL Bonded
               </span>
-              <span className="bg-primary-pink/20 px-4 py-2 text-xs font-semibold uppercase tracking-widest text-primary-brown">
+              <span className="bg-primary-cream px-4 py-2 text-xs font-semibold uppercase tracking-widest text-primary-navy">
                 Hays Travel Independence Group
               </span>
             </div>
@@ -94,10 +95,10 @@ export function AboutSection() {
                 className="object-cover"
                 priority
               />
-              {/* Pink tint glassmorphism overlay card at bottom */}
-              <div className="absolute bottom-0 left-0 right-0 bg-primary-pink/25 backdrop-blur-sm px-6 py-5">
-                <p className="font-semibold text-primary-brown">Blissful Escapes</p>
-                <p className="text-sm text-primary-brown/70">Personal Travel Consultancy · Ormskirk, Lancashire</p>
+              {/* Glassmorphism overlay card at bottom */}
+              <div className="absolute bottom-0 left-0 right-0 bg-primary-cream backdrop-blur-sm px-6 py-5">
+                <p className="font-semibold text-primary-navy">Blissful Escapes</p>
+                <p className="text-sm text-primary-sky">Personal Travel Consultancy · Ormskirk, Lancashire</p>
               </div>
             </div>
           </motion.div>

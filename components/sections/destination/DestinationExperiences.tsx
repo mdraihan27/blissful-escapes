@@ -23,8 +23,9 @@ export function DestinationExperiences({ experiences, images }: Readonly<Destina
             transition={{ duration: 0.6, ease: "easeOut" }}
             className="max-w-3xl"
           >
-            <p className="mb-5 text-sm font-semibold uppercase tracking-[0.25em] text-primary-brown/60">
+            <p className="relative mb-5 inline-block pb-2 text-sm font-semibold uppercase tracking-[0.25em] text-primary-sky">
               What a trip looks like
+              <span className="absolute bottom-0 left-0 h-px w-full bg-primary-gold" aria-hidden="true" />
             </p>
             <Heading as="h2" size="lg">
               The moments we build the whole trip around

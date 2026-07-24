@@ -34,7 +34,7 @@ export function DestinationHero({
         <Image src={imageSrc} alt={imageAlt} fill priority sizes="100vw" className="object-cover" />
       </motion.div>
 
-      <div className="absolute inset-0 bg-gradient-to-b from-primary-brown/50 via-primary-brown/20 to-primary-brown/80" />
+      <div className="absolute inset-0 bg-gradient-to-b from-primary-navy/50 via-primary-navy/20 to-primary-navy/85" />
 
       {/* Oversized watermark word, centred behind the title */}
       <span
@@ -49,9 +49,10 @@ export function DestinationHero({
           initial={{ opacity: 0, y: shouldReduceMotion ? 0 : 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.3, ease: "easeOut" }}
-          className="mb-6 text-xs font-semibold uppercase tracking-[0.4em] text-primary-beige sm:text-sm"
+          className="relative mb-6 inline-block pb-3 text-xs font-semibold uppercase tracking-[0.4em] text-primary-gold sm:text-sm"
         >
           {region}
+          <span className="absolute bottom-0 left-1/2 h-px w-full -translate-x-1/2 bg-primary-gold" aria-hidden="true" />
         </motion.p>
 
         <motion.h1
@@ -67,7 +68,7 @@ export function DestinationHero({
           initial={{ opacity: 0, y: shouldReduceMotion ? 0 : 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.6, ease: "easeOut" }}
-          className="mx-auto mt-7 max-w-xl text-lg leading-relaxed text-white/85 sm:text-xl"
+          className="mx-auto mt-7 max-w-xl text-lg leading-relaxed text-primary-cream sm:text-xl"
         >
           {tagline}
         </motion.p>
@@ -81,11 +82,11 @@ export function DestinationHero({
         transition={{ duration: 0.6, delay: 1.1 }}
         className="absolute bottom-8 left-1/2 flex -translate-x-1/2 flex-col items-center gap-3"
       >
-        <span className="text-[0.65rem] font-semibold uppercase tracking-[0.3em] text-white/60">Scroll</span>
+        <span className="text-[0.65rem] font-semibold uppercase tracking-[0.3em] text-primary-cream">Scroll</span>
         <motion.span
           animate={shouldReduceMotion ? {} : { scaleY: [0.3, 1, 0.3], originY: 0 }}
           transition={{ duration: 1.8, repeat: Infinity, ease: "easeInOut" }}
-          className="block h-10 w-px bg-white/50"
+          className="block h-10 w-px bg-primary-cream"
         />
       </motion.div>
     </section>

@@ -106,11 +106,11 @@ export function StatisticsPageContent() {
     <main className="relative min-h-dvh overflow-hidden px-4 py-10 xs:px-5 sm:px-6 sm:py-12 lg:px-10">
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute -top-40 right-0 h-96 w-96 rounded-full bg-primary-pink/15 blur-3xl"
+        className="pointer-events-none absolute -top-40 right-0 h-96 w-96 rounded-full bg-primary-sky/15 blur-3xl"
       />
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute top-1/2 -left-40 h-96 w-96 rounded-full bg-primary-beige/15 blur-3xl"
+        className="pointer-events-none absolute top-1/2 -left-40 h-96 w-96 rounded-full bg-primary-gold/15 blur-3xl"
       />
 
       <motion.div
@@ -119,11 +119,11 @@ export function StatisticsPageContent() {
         transition={{ duration: 0.5, ease: "easeOut" }}
         className="relative mb-8 sm:mb-10"
       >
-        <p className="text-xs font-semibold uppercase tracking-[0.2em] text-primary-brown/75">Overview</p>
+        <p className="text-xs font-semibold uppercase tracking-[0.2em] text-primary-sky">Overview</p>
         <Heading as="h1" size="sm" className="mt-2">
           Statistics
         </Heading>
-        <Text size="sm" className="mt-2 max-w-xl text-primary-brown/75">
+        <Text size="sm" className="mt-2 max-w-xl text-primary-sky">
           Live visit and enquiry activity across the site.
         </Text>
       </motion.div>

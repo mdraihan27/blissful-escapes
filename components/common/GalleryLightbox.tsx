@@ -55,7 +55,7 @@ export function GalleryLightbox({
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: shouldReduceMotion ? 0.1 : 0.25 }}
-          className="fixed inset-0 z-50 flex items-center justify-center bg-primary-brown/95"
+          className="fixed inset-0 z-50 flex items-center justify-center bg-primary-navy"
           role="dialog"
           aria-modal="true"
           aria-label="Photo lightbox"
@@ -67,7 +67,7 @@ export function GalleryLightbox({
             type="button"
             onClick={onClose}
             aria-label="Close lightbox"
-            className="absolute right-4 top-4 z-10 cursor-pointer p-2 text-white/70 transition-colors duration-150 hover:text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+            className="absolute right-4 top-4 z-10 cursor-pointer p-2 text-primary-sky transition-colors duration-150 hover:text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
           >
             <svg viewBox="0 0 20 20" aria-hidden="true" className="h-6 w-6 fill-none stroke-current">
               <path d="M4 4L16 16M16 4L4 16" strokeWidth="1.5" strokeLinecap="round" />
@@ -79,7 +79,7 @@ export function GalleryLightbox({
             type="button"
             onClick={(e) => { e.stopPropagation(); onPrev(); }}
             aria-label="Previous photo"
-            className="absolute left-3 top-1/2 z-10 -translate-y-1/2 cursor-pointer p-3 text-white/70 transition-colors duration-150 hover:text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white sm:left-6"
+            className="absolute left-3 top-1/2 z-10 -translate-y-1/2 cursor-pointer p-3 text-primary-sky transition-colors duration-150 hover:text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white sm:left-6"
           >
             <svg viewBox="0 0 16 16" aria-hidden="true" className="h-6 w-6 fill-none stroke-current">
               <path d="M10 3L5 8L10 13" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
@@ -104,7 +104,7 @@ export function GalleryLightbox({
                 className="object-contain"
               />
             </div>
-            <p className="mt-3 text-center text-sm text-white/60">{image.alt}</p>
+            <p className="mt-3 text-center text-sm text-primary-sky">{image.alt}</p>
           </motion.div>
 
           {/* Next */}
@@ -112,7 +112,7 @@ export function GalleryLightbox({
             type="button"
             onClick={(e) => { e.stopPropagation(); onNext(); }}
             aria-label="Next photo"
-            className="absolute right-3 top-1/2 z-10 -translate-y-1/2 cursor-pointer p-3 text-white/70 transition-colors duration-150 hover:text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white sm:right-6"
+            className="absolute right-3 top-1/2 z-10 -translate-y-1/2 cursor-pointer p-3 text-primary-sky transition-colors duration-150 hover:text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white sm:right-6"
           >
             <svg viewBox="0 0 16 16" aria-hidden="true" className="h-6 w-6 fill-none stroke-current">
               <path d="M6 3L11 8L6 13" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />

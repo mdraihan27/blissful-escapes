@@ -71,12 +71,12 @@ export function AdminLoginForm({ onSuccess }: Readonly<AdminLoginFormProps>) {
         transition={{ duration: 0.4 }}
         className="text-center"
       >
-        <div className="mx-auto mb-6 inline-flex items-center justify-center rounded-full border border-primary-brown/15 bg-primary-pink/30 p-5">
-          <svg viewBox="0 0 24 24" aria-hidden="true" className="h-8 w-8 fill-none stroke-primary-brown">
+        <div className="mx-auto mb-6 inline-flex items-center justify-center rounded-full border border-primary-navy/15 bg-primary-cream p-5">
+          <svg viewBox="0 0 24 24" aria-hidden="true" className="h-8 w-8 fill-none stroke-primary-navy">
             <path d="M4 12L9 17L20 6" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
           </svg>
         </div>
-        <Text size="base" className="text-primary-brown/75">
+        <Text size="base" className="text-primary-sky">
           If that user ID exists, a login link has been sent. Check the registered email and follow the link to sign in.
         </Text>
         <button
@@ -86,7 +86,7 @@ export function AdminLoginForm({ onSuccess }: Readonly<AdminLoginFormProps>) {
             setPassword("");
             setError("");
           }}
-          className="mt-8 cursor-pointer text-sm text-primary-brown/75 underline-offset-2 hover:text-primary-brown hover:underline focus-visible:outline-2 focus-visible:outline-primary-brown"
+          className="mt-8 cursor-pointer text-sm text-primary-sky underline-offset-2 hover:text-primary-navy hover:underline focus-visible:outline-2 focus-visible:outline-primary-navy"
         >
           Back to sign in
         </button>
@@ -146,7 +146,7 @@ export function AdminLoginForm({ onSuccess }: Readonly<AdminLoginFormProps>) {
               setView("forgot");
               setError("");
             }}
-            className="cursor-pointer text-center text-sm text-primary-brown/75 underline-offset-2 hover:text-primary-brown hover:underline focus-visible:outline-2 focus-visible:outline-primary-brown"
+            className="cursor-pointer text-center text-sm text-primary-sky underline-offset-2 hover:text-primary-navy hover:underline focus-visible:outline-2 focus-visible:outline-primary-navy"
           >
             Forgot your password?
           </button>
@@ -162,7 +162,7 @@ export function AdminLoginForm({ onSuccess }: Readonly<AdminLoginFormProps>) {
           className="flex flex-col gap-6"
           noValidate
         >
-          <Text size="sm" className="text-primary-brown/70">
+          <Text size="sm" className="text-primary-sky">
             Enter your user ID and we will email a one time login link to the registered address.
           </Text>
 
@@ -193,7 +193,7 @@ export function AdminLoginForm({ onSuccess }: Readonly<AdminLoginFormProps>) {
               setView("login");
               setError("");
             }}
-            className="cursor-pointer text-center text-sm text-primary-brown/75 underline-offset-2 hover:text-primary-brown hover:underline focus-visible:outline-2 focus-visible:outline-primary-brown"
+            className="cursor-pointer text-center text-sm text-primary-sky underline-offset-2 hover:text-primary-navy hover:underline focus-visible:outline-2 focus-visible:outline-primary-navy"
           >
             Back to sign in
           </button>

@@ -38,16 +38,17 @@ export function GallerySection() {
     );
 
   return (
-    <section id="gallery" className="py-14 sm:py-16.75 lg:py-22.5 bg-primary-pink/30">
+    <section id="gallery" className="py-14 sm:py-16.75 lg:py-22.5 bg-primary-cream">
       <Container>
         <div className="mb-12 sm:mb-16">
-          <p className="mb-4 text-sm font-semibold uppercase tracking-[0.2em] text-primary-brown/70">
+          <p className="relative mb-4 inline-block pb-2 text-sm font-semibold uppercase tracking-[0.2em] text-primary-sky">
             A glimpse of what awaits
+            <span className="absolute bottom-0 left-0 h-px w-full bg-primary-gold" aria-hidden="true" />
           </p>
           <Heading as="h2" size="lg">
             Gallery
           </Heading>
-          <Text size="lg" className="mt-5 max-w-2xl text-primary-brown/70">
+          <Text size="lg" className="mt-5 max-w-2xl text-primary-navy">
             A small selection from the trips we have helped plan. Every photograph represents a real journey, a real client, a real moment.
           </Text>
         </div>
@@ -64,7 +65,7 @@ export function GallerySection() {
               transition={{ duration: 0.6, delay: (index % 6) * 0.07, ease: "easeOut" }}
               onClick={() => openLightbox(index)}
               aria-label={`View photo: ${image.alt}`}
-              className={`group relative block cursor-pointer overflow-hidden rounded-2xl focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-brown ${aspectSpanClasses[image.aspectRatio]}`}
+              className={`group relative block cursor-pointer overflow-hidden rounded-2xl focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-navy ${aspectSpanClasses[image.aspectRatio]}`}
             >
               <Image
                 src={image.src}
@@ -73,7 +74,7 @@ export function GallerySection() {
                 sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
                 className="object-cover transition-transform duration-500 ease-out group-hover:scale-108"
               />
-              <div className="absolute inset-0 bg-primary-brown/0 transition-colors duration-300 group-hover:bg-primary-brown/15" />
+              <div className="absolute inset-0 bg-transparent transition-colors duration-300 group-hover:bg-primary-navy/30" />
             </motion.button>
           ))}
         </div>
@@ -88,7 +89,7 @@ export function GallerySection() {
             </Button>
           )}
           {isExpanded && (
-            <Button variant="ghost" onClick={() => setVisibleCount(PAGE_SIZE)} className="text-primary-brown">
+            <Button variant="ghost" onClick={() => setVisibleCount(PAGE_SIZE)} className="text-primary-navy">
               Show less
             </Button>
           )}

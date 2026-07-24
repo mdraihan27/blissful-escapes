@@ -113,8 +113,8 @@ export function DatePicker({
           }}
           className={`w-full py-3.5 pl-4 pr-11 text-base outline-none transition-shadow duration-200 ${
             isOnImage
-              ? "bg-white/12 text-white placeholder:text-white/50 shadow-[inset_0_-2px_0_0_rgba(255,255,255,0.35)] focus:shadow-[inset_0_-2px_0_0_rgba(255,255,255,1)]"
-              : "bg-primary-brown/4 text-primary-brown placeholder:text-primary-brown/40 shadow-[inset_0_-2px_0_0_rgba(55,34,34,0.15)] focus:shadow-[inset_0_-2px_0_0_rgba(55,34,34,1)]"
+              ? "bg-primary-navy/20 text-white placeholder:text-white/70 shadow-[inset_0_-2px_0_0_#70a7bf] focus:shadow-[inset_0_-2px_0_0_#ffffff]"
+              : "bg-primary-cream text-primary-navy placeholder:text-primary-sky shadow-[inset_0_-2px_0_0_#70a7bf] focus:shadow-[inset_0_-2px_0_0_#274957]"
           }`}
         />
         <button
@@ -122,7 +122,7 @@ export function DatePicker({
           aria-label={isOpen ? "Close calendar" : "Open calendar"}
           onClick={() => setIsOpen((current) => !current)}
           className={`absolute right-3 top-1/2 -translate-y-1/2 cursor-pointer transition-colors duration-150 ${
-            isOnImage ? "text-white/60 hover:text-white" : "text-primary-brown/50 hover:text-primary-brown"
+            isOnImage ? "text-primary-sky hover:text-white" : "text-primary-sky hover:text-primary-navy"
           }`}
         >
           <svg viewBox="0 0 20 20" aria-hidden="true" className="h-5 w-5 fill-none stroke-current">
@@ -140,7 +140,7 @@ export function DatePicker({
             exit={{ opacity: 0 }}
             transition={{ duration: 0.18, ease: "easeOut" }}
             onClick={() => setIsOpen(false)}
-            className="fixed inset-0 z-50 flex items-center justify-center bg-primary-brown/40 px-4"
+            className="fixed inset-0 z-50 flex items-center justify-center bg-primary-navy px-4"
           >
             <motion.div
               onClick={(event) => event.stopPropagation()}
@@ -148,7 +148,7 @@ export function DatePicker({
               animate={{ opacity: 1, y: 0, scale: 1 }}
               exit={{ opacity: 0, y: shouldReduceMotion ? 0 : 12, scale: shouldReduceMotion ? 1 : 0.97 }}
               transition={{ duration: 0.18, ease: "easeOut" }}
-              className="w-72 max-w-[calc(100vw-2rem)] bg-white p-5 shadow-[0_20px_60px_rgba(55,34,34,0.28)]"
+              className="w-72 max-w-[calc(100vw-2rem)] bg-white p-5 shadow-[0_20px_60px_rgba(39,73,87,0.28)]"
             >
               <div className="flex items-center justify-between gap-2">
                 <IconButton
@@ -164,14 +164,14 @@ export function DatePicker({
                 </IconButton>
 
                 <div className="flex items-center gap-1.5">
-                  <span className="text-sm font-semibold text-primary-brown">
+                  <span className="text-sm font-semibold text-primary-navy">
                     {viewMonth.toLocaleDateString("en-GB", { month: "long" })}
                   </span>
                   <select
                     aria-label="Select year"
                     value={viewMonth.getFullYear()}
                     onChange={(event) => changeYear(Number(event.target.value))}
-                    className="cursor-pointer bg-transparent text-sm font-semibold text-primary-brown outline-none"
+                    className="cursor-pointer bg-transparent text-sm font-semibold text-primary-navy outline-none"
                   >
                     {yearOptions.map((year) => (
                       <option key={year} value={year}>
@@ -190,7 +190,7 @@ export function DatePicker({
 
               <div className="mt-4 grid grid-cols-7 place-items-center gap-y-1">
                 {WEEKDAY_LABELS.map((label) => (
-                  <span key={label} className="text-xs font-semibold uppercase tracking-wide text-primary-brown/40">
+                  <span key={label} className="text-xs font-semibold uppercase tracking-wide text-primary-sky">
                     {label}
                   </span>
                 ))}

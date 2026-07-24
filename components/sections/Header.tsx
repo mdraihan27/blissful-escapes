@@ -21,23 +21,23 @@ export function Header() {
 
   return (
     <>
-      <header className="sticky top-0 z-40 bg-primary-pink">
+      <header className="sticky top-0 z-40 bg-primary-navy">
         <Container className="flex items-center justify-between py-4 sm:py-5">
-          <Logo tone="brown" />
+          <Logo tone="cream" />
 
           <nav className="hidden md:flex md:items-center md:gap-7 lg:gap-9">
             {navLinks.map((link) =>
               link.href === "#destinations" ? (
-                <NavDropdown key={link.href} href={link.href} label={link.label} />
+                <NavDropdown key={link.href} href={link.href} label={link.label} tone="cream" />
               ) : (
-                <NavLink key={link.href} href={link.href} label={link.label} tone="brown" />
+                <NavLink key={link.href} href={link.href} label={link.label} tone="cream" />
               )
             )}
           </nav>
 
           <IconButton
             label="Open menu"
-            tone="dark"
+            tone="light"
             onClick={() => setIsMobileMenuOpen(true)}
             className="md:hidden"
           >

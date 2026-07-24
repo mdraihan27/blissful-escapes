@@ -1,8 +1,7 @@
 import type { Metadata } from "next";
-import { Suspense } from "react";
 import "./globals.css";
 import { PageScrollbar } from "@/components/common/PageScrollbar";
-import { SiteVisitTracker } from "@/components/common/SiteVisitTracker";
+import { woodland } from "@/lib/fonts";
 
 export const metadata: Metadata = {
   title: "Blissful Escapes | Luxury Travel, Personally Planned",
@@ -16,19 +15,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="h-full antialiased">
+    <html lang="en" className={`h-full antialiased ${woodland.variable}`}>
       <body className="min-h-full flex flex-col font-sans">
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
-          rel="stylesheet"
-        />
         {children}
         <PageScrollbar />
-        <Suspense fallback={null}>
-          <SiteVisitTracker />
-        </Suspense>
       </body>
     </html>
   );

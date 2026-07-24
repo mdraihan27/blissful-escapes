@@ -19,8 +19,8 @@ export function IconButton({
 }: Readonly<IconButtonProps>) {
   const toneClasses =
     tone === "light"
-      ? "bg-white/15 text-white hover:bg-white/30 focus-visible:outline-white"
-      : "bg-primary-brown/10 text-primary-brown hover:bg-primary-brown/20 focus-visible:outline-primary-brown";
+      ? "bg-white text-primary-navy hover:bg-primary-gold focus-visible:outline-white"
+      : "bg-primary-cream text-primary-navy hover:bg-primary-sky focus-visible:outline-primary-navy";
 
   return (
     <button

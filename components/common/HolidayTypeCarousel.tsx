@@ -98,7 +98,7 @@ export function HolidayTypeCarousel({ items, onIndexChange }: Readonly<HolidayTy
           >
             <span
               className={`block h-1 transition-all duration-300 ease-out ${
-                index === selectedIndex ? "w-6 bg-white" : "w-1.5 bg-white/35"
+                index === selectedIndex ? "w-6 bg-white" : "w-1.5 bg-primary-sky"
               }`}
             />
           </button>

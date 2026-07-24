@@ -12,15 +12,15 @@ export function MessageGroupDivider({ label, count, tone }: Readonly<MessageGrou
       <span
         className={`inline-flex items-center gap-2 rounded-full px-3 py-1 text-xs font-bold uppercase tracking-[0.15em] ${
           isNew
-            ? "bg-primary-brown text-white"
-            : "bg-primary-brown/15 text-primary-brown/75"
+            ? "bg-primary-navy text-white"
+            : "bg-primary-cream text-primary-sky"
         }`}
       >
-        {isNew && <span aria-hidden="true" className="h-1.5 w-1.5 rounded-full bg-primary-beige" />}
+        {isNew && <span aria-hidden="true" className="h-1.5 w-1.5 rounded-full bg-primary-gold" />}
         {label}
-        {typeof count === "number" && <span className={isNew ? "text-primary-beige" : "text-primary-brown/70"}>{count}</span>}
+        {typeof count === "number" && <span className={isNew ? "text-primary-gold" : "text-primary-sky"}>{count}</span>}
       </span>
-      <span className={`h-px flex-1 ${isNew ? "bg-primary-brown/25" : "bg-primary-brown/15"}`} />
+      <span className={`h-px flex-1 ${isNew ? "bg-primary-sky" : "bg-primary-cream"}`} />
     </div>
   );
 }

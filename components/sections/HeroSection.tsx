@@ -11,8 +11,8 @@ export function HeroSection() {
 
         <div className="relative z-10 flex h-full min-h-[86dvh] flex-col justify-end pb-8 sm:min-h-[90dvh] sm:pb-10 lg:min-h-[92dvh] lg:pb-12">
           <Container>
-            <div className="max-w-xl lg:max-w-2xl">
-              <Heading as="h1" size="xl" italic className="text-white">
+            <div className="mx-auto max-w-3xl text-center">
+              <Heading as="h1" size="xl" className="text-white">
                 Plan your next escape with us.
               </Heading>
             </div>

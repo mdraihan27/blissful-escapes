@@ -11,12 +11,16 @@ export interface NavDropdownProps {
   label: string;
   /** Hash target scrolled to when the label itself is clicked, e.g. "#destinations" */
   href: string;
+  tone?: "brown" | "cream";
 }
 
-export function NavDropdown({ label, href }: Readonly<NavDropdownProps>) {
+export function NavDropdown({ label, href, tone = "brown" }: Readonly<NavDropdownProps>) {
   const [isOpen, setIsOpen] = useState(false);
   const closeTimeoutRef = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
   const shouldReduceMotion = useReducedMotion();
+  const idleColor = tone === "brown" ? "text-primary-navy" : "text-white";
+  const hoverColor = tone === "brown" ? "hover:text-primary-sky" : "hover:text-primary-gold";
+  const underlineColor = tone === "brown" ? "bg-primary-navy" : "bg-primary-gold";
 
   const open = () => {
     clearTimeout(closeTimeoutRef.current);
@@ -54,7 +58,7 @@ export function NavDropdown({ label, href }: Readonly<NavDropdownProps>) {
         onFocus={open}
         aria-expanded={isOpen}
         aria-haspopup="true"
-        className="group relative inline-flex items-center gap-1 py-1 text-sm font-medium tracking-wide text-primary-brown/80 transition-colors duration-200 hover:text-primary-brown focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary-brown"
+        className={`group relative inline-flex items-center gap-1 py-1 text-sm font-medium tracking-wide transition-colors duration-200 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary-navy ${idleColor} ${hoverColor}`}
       >
         {label}
         <svg
@@ -64,7 +68,9 @@ export function NavDropdown({ label, href }: Readonly<NavDropdownProps>) {
         >
           <path d="M1 1L6 6L11 1" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
         </svg>
-        <span className="pointer-events-none absolute -bottom-0.5 left-0 h-px w-full origin-left scale-x-0 bg-primary-brown transition-transform duration-300 ease-out group-hover:scale-x-100" />
+        <span
+          className={`pointer-events-none absolute -bottom-0.5 left-0 h-px w-full origin-left scale-x-0 transition-transform duration-300 ease-out group-hover:scale-x-100 ${underlineColor}`}
+        />
       </Link>
 
       <AnimatePresence>
@@ -76,14 +82,14 @@ export function NavDropdown({ label, href }: Readonly<NavDropdownProps>) {
             transition={{ duration: 0.18, ease: "easeOut" }}
             onMouseEnter={open}
             onMouseLeave={scheduleClose}
-            className="absolute left-1/2 top-[calc(100%+0.75rem)] z-40 w-72 -translate-x-1/2 bg-white p-2 shadow-[0_20px_60px_rgba(55,34,34,0.18)]"
+            className="absolute left-1/2 top-[calc(100%+0.75rem)] z-40 w-72 -translate-x-1/2 bg-white p-2 shadow-[0_20px_60px_rgba(39,73,87,0.18)]"
           >
             {destinationDetails.map((destination) => (
               <Link
                 key={destination.slug}
                 href={`/destinations/${destination.slug}`}
                 onClick={() => setIsOpen(false)}
-                className="group flex items-center gap-3 p-2 transition-colors duration-150 hover:bg-primary-pink/15 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-brown"
+                className="group flex items-center gap-3 p-2 transition-colors duration-150 hover:bg-primary-cream focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-navy"
               >
                 <span className="relative h-12 w-16 shrink-0 overflow-hidden">
                   <Image
@@ -95,8 +101,8 @@ export function NavDropdown({ label, href }: Readonly<NavDropdownProps>) {
                   />
                 </span>
                 <span className="min-w-0">
-                  <span className="block text-sm font-semibold text-primary-brown">{destination.name}</span>
-                  <span className="block truncate text-xs text-primary-brown/55">{destination.region}</span>
+                  <span className="block text-sm font-semibold text-primary-navy">{destination.name}</span>
+                  <span className="block truncate text-xs text-primary-sky">{destination.region}</span>
                 </span>
               </Link>
             ))}

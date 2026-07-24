@@ -26,12 +26,12 @@ export function CalendarDay({
       type="button"
       disabled={isDisabled}
       onClick={() => onSelect(date)}
-      className={`flex h-9 w-9 items-center justify-center text-sm transition-colors duration-150 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-brown ${
+      className={`flex h-9 w-9 items-center justify-center text-sm transition-colors duration-150 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-navy ${
         isDisabled
-          ? "cursor-not-allowed text-primary-brown/20"
-          : "cursor-pointer text-primary-brown hover:bg-primary-pink/30"
-      } ${isSelected ? "bg-primary-beige font-semibold hover:bg-primary-beige" : ""} ${
-        isToday && !isSelected ? "shadow-[inset_0_-2px_0_0_rgba(55,34,34,0.45)]" : ""
+          ? "cursor-not-allowed text-primary-sky"
+          : "cursor-pointer text-primary-navy hover:bg-primary-sky hover:text-white"
+      } ${isSelected ? "bg-primary-gold font-semibold hover:bg-primary-gold hover:text-primary-navy" : ""} ${
+        isToday && !isSelected ? "shadow-[inset_0_-2px_0_0_#274957]" : ""
       }`}
     >
       {label}

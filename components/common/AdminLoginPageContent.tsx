@@ -23,11 +23,11 @@ export function AdminLoginPageContent() {
     <main className="relative flex min-h-dvh items-center justify-center overflow-hidden bg-white px-4 py-16 xs:px-5 sm:px-6">
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute -top-32 -right-32 h-80 w-80 rounded-full bg-primary-pink/30 blur-3xl sm:h-[28rem] sm:w-[28rem]"
+        className="pointer-events-none absolute -top-32 -right-32 h-80 w-80 rounded-full bg-primary-sky/30 blur-3xl sm:h-[28rem] sm:w-[28rem]"
       />
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute -bottom-32 -left-32 h-80 w-80 rounded-full bg-primary-beige/25 blur-3xl sm:h-[28rem] sm:w-[28rem]"
+        className="pointer-events-none absolute -bottom-32 -left-32 h-80 w-80 rounded-full bg-primary-gold/25 blur-3xl sm:h-[28rem] sm:w-[28rem]"
       />
 
       <motion.div
@@ -38,18 +38,18 @@ export function AdminLoginPageContent() {
       >
         <div className="mb-10 flex flex-col items-center text-center">
           <Logo className="items-center" />
-          <p className="mt-6 text-sm font-semibold uppercase tracking-[0.2em] text-primary-brown/70">
+          <p className="mt-6 text-sm font-semibold uppercase tracking-[0.2em] text-primary-sky">
             Admin access
           </p>
           <Heading as="h1" size="sm" className="mt-3">
             Sign in to your dashboard
           </Heading>
-          <Text size="sm" className="mt-3 text-primary-brown/70">
+          <Text size="sm" className="mt-3 text-primary-sky">
             This area is restricted to Blissful Escapes staff.
           </Text>
         </div>
 
-        <div className="rounded-2xl border border-primary-brown/20 bg-white p-6 shadow-xl shadow-primary-brown/15 xs:p-8 sm:p-10">
+        <div className="rounded-2xl border border-primary-navy/20 bg-white p-6 shadow-xl shadow-primary-navy/15 xs:p-8 sm:p-10">
           <AdminLoginForm onSuccess={() => router.replace("/admin/dashboard")} />
         </div>
       </motion.div>

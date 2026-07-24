@@ -3,8 +3,10 @@
 import { createContext, useContext, useState, type ReactNode } from "react";
 
 export interface TripPlan {
-  when: string;
+  from: string;
   where: string;
+  when: string;
+  duration: string;
 }
 
 interface TripPlanContextValue {

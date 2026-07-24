@@ -9,7 +9,7 @@ export function DestinationPageHeader() {
         <Logo tone="cream" />
         <Link
           href="/"
-          className="group inline-flex items-center gap-2 text-sm font-medium text-white/80 transition-colors duration-200 hover:text-white focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
+          className="group inline-flex items-center gap-2 text-sm font-medium text-primary-cream transition-colors duration-200 hover:text-white focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
         >
           <svg viewBox="0 0 16 16" aria-hidden="true" className="h-3.5 w-3.5 fill-none stroke-current">
             <path d="M10 3L5 8L10 13" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />

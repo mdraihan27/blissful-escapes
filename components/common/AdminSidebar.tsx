@@ -51,13 +51,13 @@ export function AdminSidebar() {
   return (
     <>
       {/* Mobile top bar */}
-      <div className="flex items-center justify-between border-b border-primary-brown/20 bg-primary-pink/15 px-4 py-4 xs:px-5 md:hidden">
+      <div className="flex items-center justify-between border-b border-primary-navy/20 bg-primary-cream px-4 py-4 xs:px-5 md:hidden">
         <Logo />
         <button
           type="button"
           onClick={() => setMobileOpen(true)}
           aria-label="Open menu"
-          className="flex h-10 w-10 cursor-pointer items-center justify-center rounded-lg border border-primary-brown/15 bg-primary-brown/10 text-primary-brown transition-colors duration-200 hover:bg-primary-brown/20 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-brown"
+          className="flex h-10 w-10 cursor-pointer items-center justify-center rounded-lg border border-primary-navy/15 bg-primary-navy/10 text-primary-navy transition-colors duration-200 hover:bg-primary-navy/20 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-navy"
         >
           <svg viewBox="0 0 20 16" aria-hidden="true" className="h-4 w-5 fill-none stroke-current">
             <path d="M1 1H19M1 8H19M1 15H19" strokeWidth="1.6" strokeLinecap="round" />
@@ -66,18 +66,18 @@ export function AdminSidebar() {
       </div>
 
       {/* Desktop sidebar */}
-      <aside className="hidden md:sticky md:top-0 md:flex md:h-dvh md:w-64 md:shrink-0 md:flex-col md:border-r md:border-primary-brown/20 md:bg-white lg:w-72">
+      <aside className="hidden md:sticky md:top-0 md:flex md:h-dvh md:w-64 md:shrink-0 md:flex-col md:border-r md:border-primary-navy/20 md:bg-white lg:w-72">
         <div className="px-6 py-7">
           <Logo />
         </div>
         {navList}
-        <div className="border-t border-primary-brown/20 px-3 py-6">
+        <div className="border-t border-primary-navy/20 px-3 py-6">
           {user && (
             <div className="mb-3 px-4">
-              <Text size="sm" className="text-primary-brown/75">
+              <Text size="sm" className="text-primary-sky">
                 Signed in as
               </Text>
-              <Text size="sm" className="font-semibold text-primary-brown">
+              <Text size="sm" className="font-semibold text-primary-navy">
                 {user.userId}
               </Text>
             </div>
@@ -85,7 +85,7 @@ export function AdminSidebar() {
           <button
             type="button"
             onClick={handleLogout}
-            className="flex w-full cursor-pointer items-center gap-3 px-4 py-3 text-sm font-semibold tracking-wide text-primary-brown/75 transition-colors duration-200 hover:bg-primary-pink/20 hover:text-primary-brown focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-brown"
+            className="flex w-full cursor-pointer items-center gap-3 px-4 py-3 text-sm font-semibold tracking-wide text-primary-sky transition-colors duration-200 hover:bg-primary-cream hover:text-primary-navy focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-navy"
           >
             <span className="flex h-5 w-5 shrink-0 items-center justify-center">
               <LogoutIcon />
@@ -105,7 +105,7 @@ export function AdminSidebar() {
               exit={{ opacity: 0 }}
               transition={{ duration: 0.2 }}
               onClick={() => setMobileOpen(false)}
-              className="fixed inset-0 z-40 bg-primary-brown/40 md:hidden"
+              className="fixed inset-0 z-40 bg-primary-navy/40 md:hidden"
               aria-hidden="true"
             />
             <motion.aside
@@ -113,15 +113,15 @@ export function AdminSidebar() {
               animate={{ x: 0 }}
               exit={{ x: "-100%" }}
               transition={{ duration: 0.3, ease: "easeOut" }}
-              className="fixed inset-y-0 left-0 z-50 flex w-72 max-w-[85vw] flex-col border-r border-primary-brown/20 bg-white shadow-2xl shadow-primary-brown/30 md:hidden"
+              className="fixed inset-y-0 left-0 z-50 flex w-72 max-w-[85vw] flex-col border-r border-primary-navy/20 bg-white shadow-2xl shadow-primary-navy/30 md:hidden"
             >
-              <div className="flex items-center justify-between border-b border-primary-brown/20 px-6 py-7">
+              <div className="flex items-center justify-between border-b border-primary-navy/20 px-6 py-7">
                 <Logo />
                 <button
                   type="button"
                   onClick={() => setMobileOpen(false)}
                   aria-label="Close menu"
-                  className="flex h-9 w-9 cursor-pointer items-center justify-center rounded-lg border border-primary-brown/15 bg-primary-brown/10 text-primary-brown transition-colors duration-200 hover:bg-primary-brown/20 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-brown"
+                  className="flex h-9 w-9 cursor-pointer items-center justify-center rounded-lg border border-primary-navy/15 bg-primary-navy/10 text-primary-navy transition-colors duration-200 hover:bg-primary-navy/20 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-navy"
                 >
                   <svg viewBox="0 0 16 16" aria-hidden="true" className="h-3.5 w-3.5 fill-none stroke-current">
                     <path d="M1 1L15 15M15 1L1 15" strokeWidth="1.6" strokeLinecap="round" />
@@ -129,13 +129,13 @@ export function AdminSidebar() {
                 </button>
               </div>
               <div onClick={() => setMobileOpen(false)}>{navList}</div>
-              <div className="mt-auto border-t border-primary-brown/20 px-3 py-6">
+              <div className="mt-auto border-t border-primary-navy/20 px-3 py-6">
                 {user && (
                   <div className="mb-3 px-4">
-                    <Text size="sm" className="text-primary-brown/75">
+                    <Text size="sm" className="text-primary-sky">
                       Signed in as
                     </Text>
-                    <Text size="sm" className="font-semibold text-primary-brown">
+                    <Text size="sm" className="font-semibold text-primary-navy">
                       {user.userId}
                     </Text>
                   </div>
@@ -143,7 +143,7 @@ export function AdminSidebar() {
                 <button
                   type="button"
                   onClick={handleLogout}
-                  className="flex w-full cursor-pointer items-center gap-3 px-4 py-3 text-sm font-semibold tracking-wide text-primary-brown/75 transition-colors duration-200 hover:bg-primary-pink/20 hover:text-primary-brown focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-brown"
+                  className="flex w-full cursor-pointer items-center gap-3 px-4 py-3 text-sm font-semibold tracking-wide text-primary-sky transition-colors duration-200 hover:bg-primary-cream hover:text-primary-navy focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-navy"
                 >
                   <span className="flex h-5 w-5 shrink-0 items-center justify-center">
                     <LogoutIcon />

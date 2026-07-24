@@ -23,7 +23,7 @@ export function MobileMenuPanel({ isOpen, onClose }: Readonly<MobileMenuPanelPro
           animate={{ x: 0, opacity: 1 }}
           exit={{ x: shouldReduceMotion ? 0 : "100%", opacity: shouldReduceMotion ? 0 : 1 }}
           transition={{ duration: shouldReduceMotion ? 0.15 : 0.35, ease: [0.16, 1, 0.3, 1] }}
-          className="fixed inset-0 z-50 flex h-dvh w-full flex-col bg-primary-brown px-6 py-5 sm:px-10 sm:py-6 md:hidden"
+          className="fixed inset-0 z-50 flex h-dvh w-full flex-col bg-primary-navy px-6 py-5 sm:px-10 sm:py-6 md:hidden"
           role="dialog"
           aria-modal="true"
           aria-label="Mobile navigation"
@@ -56,7 +56,7 @@ export function MobileMenuPanel({ isOpen, onClose }: Readonly<MobileMenuPanelPro
                         <Link
                           href={`/destinations/${destination.slug}`}
                           onClick={onClose}
-                          className="text-base text-white/60 transition-colors duration-150 hover:text-primary-pink focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+                          className="text-base text-primary-sky transition-colors duration-150 hover:text-primary-gold focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
                         >
                           {destination.name}
                         </Link>
@@ -69,7 +69,7 @@ export function MobileMenuPanel({ isOpen, onClose }: Readonly<MobileMenuPanelPro
             </div>
           </nav>
 
-          <p className="mt-4 text-sm text-white/60">
+          <p className="mt-4 text-sm text-primary-sky">
             Prefer to talk it through? Call us on 07789 652 136.
           </p>
         </motion.div>

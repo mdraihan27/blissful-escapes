@@ -1,11 +1,18 @@
 import type { InputHTMLAttributes } from "react";
 
-export interface InputProps extends InputHTMLAttributes<HTMLInputElement> {}
+export interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
+  tone?: "default" | "onImage";
+}
 
-export function Input({ className = "", ...rest }: Readonly<InputProps>) {
+export function Input({ tone = "default", className = "", ...rest }: Readonly<InputProps>) {
+  const toneClasses =
+    tone === "onImage"
+      ? "bg-primary-navy/20 text-white placeholder:text-white/70 shadow-[inset_0_-2px_0_0_#70a7bf] focus:shadow-[inset_0_-2px_0_0_#ffffff]"
+      : "bg-primary-cream text-primary-navy placeholder:text-primary-sky shadow-[inset_0_-2px_0_0_#70a7bf] focus:shadow-[inset_0_-2px_0_0_#274957]";
+
   return (
     <input
-      className={`w-full bg-primary-brown/4 px-4 py-3.5 text-base text-primary-brown placeholder:text-primary-brown/40 outline-none transition-shadow duration-200 shadow-[inset_0_-2px_0_0_rgba(55,34,34,0.15)] focus:shadow-[inset_0_-2px_0_0_rgba(55,34,34,1)] ${className}`}
+      className={`w-full px-4 py-3.5 text-base outline-none transition-shadow duration-200 ${toneClasses} ${className}`}
       {...rest}
     />
   );

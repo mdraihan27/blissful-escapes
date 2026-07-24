@@ -39,14 +39,10 @@ export function DestinationIndexRow({
         aria-label={`Explore ${name}`}
         onMouseEnter={onActivate}
         onFocus={onActivate}
-        className="group block py-6 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary-brown sm:py-7"
+        className="group block py-6 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary-navy sm:py-7"
       >
         <div className="flex items-baseline gap-4 sm:gap-6">
-          <span
-            className={`text-sm font-semibold tabular-nums transition-colors duration-300 ${
-              isActive ? "text-primary-pink" : "text-primary-brown/40"
-            }`}
-          >
+          <span className="text-sm font-semibold tabular-nums text-primary-sky transition-colors duration-300">
             {String(displayIndex + 1).padStart(2, "0")}
           </span>
 
@@ -54,12 +50,12 @@ export function DestinationIndexRow({
             <div className="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-1">
               <h3
                 className={`text-3xl font-semibold tracking-tight transition-transform duration-300 ease-out sm:text-4xl lg:text-5xl ${
-                  isActive ? "text-primary-brown sm:translate-x-2" : "text-primary-brown/70"
+                  isActive ? "text-primary-navy sm:translate-x-2" : "text-primary-sky"
                 }`}
               >
                 {name}
               </h3>
-              <span className="text-xs font-semibold uppercase tracking-[0.2em] text-primary-brown/50">
+              <span className="text-xs font-semibold uppercase tracking-[0.2em] text-primary-sky">
                 {region}
               </span>
             </div>
@@ -74,9 +70,9 @@ export function DestinationIndexRow({
                   sizes="100vw"
                   className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-primary-brown/70 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-primary-navy/70 to-transparent" />
               </div>
-              <p className="mt-3 text-sm text-primary-brown/70">{tagline}</p>
+              <p className="mt-3 text-sm text-primary-sky">{tagline}</p>
             </div>
 
             {/* Desktop: tagline reveals on active */}
@@ -86,13 +82,13 @@ export function DestinationIndexRow({
               }`}
             >
               <div className="overflow-hidden">
-                <p className="mt-3 max-w-md text-base text-primary-brown/70">{tagline}</p>
+                <p className="mt-3 max-w-md text-base text-primary-sky">{tagline}</p>
               </div>
             </div>
           </div>
 
           <span
-            className={`hidden shrink-0 items-center gap-2 self-center text-sm font-semibold text-primary-brown transition-opacity duration-300 lg:inline-flex ${
+            className={`hidden shrink-0 items-center gap-2 self-center text-sm font-semibold text-primary-navy transition-opacity duration-300 lg:inline-flex ${
               isActive ? "opacity-100" : "opacity-0"
             }`}
           >
@@ -109,8 +105,8 @@ export function DestinationIndexRow({
 
         {/* Divider via spacing + subtle contrast, not a border */}
         <div
-          className={`mt-6 h-px w-full origin-left transition-transform duration-500 ease-out sm:mt-7 ${
-            isActive ? "scale-x-100 bg-primary-brown/30" : "scale-x-100 bg-primary-brown/10"
+          className={`mt-6 h-px w-full origin-left scale-x-100 transition-transform duration-500 ease-out sm:mt-7 ${
+            isActive ? "bg-primary-navy" : "bg-primary-sky"
           }`}
         />
       </Link>
