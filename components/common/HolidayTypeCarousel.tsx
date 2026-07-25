@@ -55,6 +55,7 @@ export function HolidayTypeCarousel({ items, onIndexChange }: Readonly<HolidayTy
             >
               <HolidayTypeCarouselSlide
                 label={item.label}
+                href={`/holidays/${item.slug}`}
                 imageSrc={item.imageSrc}
                 imageAlt={item.imageAlt}
                 isFirst={index === 0}

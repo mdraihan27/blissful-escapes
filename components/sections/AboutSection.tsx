@@ -88,8 +88,8 @@ export function AboutSection() {
             */}
             <div className="relative aspect-[3/4] w-full overflow-hidden sm:aspect-[4/5] lg:aspect-[3/4]">
               <Image
-                src="/assets/images/banner/woman-maldives-jetty-banner.jpg"
-                alt="A traveller walking along a jetty towards overwater bungalows in the Maldives"
+                src="/assets/images/banner/deer-island-mauritius-banner.jpg"
+                alt="A quiet palm fringed beach with turquoise water in Mauritius"
                 fill
                 sizes="(max-width: 1024px) 100vw, 50vw"
                 className="object-cover"

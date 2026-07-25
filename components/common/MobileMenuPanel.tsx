@@ -6,6 +6,7 @@ import { NavLink } from "@/components/ui/NavLink";
 import { IconButton } from "@/components/ui/IconButton";
 import { navLinks } from "@/lib/navLinks";
 import { destinationDetails } from "@/lib/destinationDetails";
+import { holidayTypeDetails } from "@/lib/holidayTypeDetails";
 
 export interface MobileMenuPanelProps {
   isOpen: boolean;
@@ -48,6 +49,22 @@ export function MobileMenuPanel({ isOpen, onClose }: Readonly<MobileMenuPanelPro
                 transition={{ delay: shouldReduceMotion ? 0 : 0.08 + index * 0.05, duration: 0.3 }}
               >
                 <NavLink href={link.href} label={link.label} tone="cream" className="text-2xl" onNavigate={onClose} />
+
+                {link.href === "#holiday-types" && (
+                  <ul className="mt-4 grid grid-cols-2 gap-x-4 gap-y-3 pl-4">
+                    {holidayTypeDetails.map((holidayType) => (
+                      <li key={holidayType.slug}>
+                        <Link
+                          href={`/holidays/${holidayType.slug}`}
+                          onClick={onClose}
+                          className="text-sm text-primary-sky transition-colors duration-150 hover:text-primary-gold focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+                        >
+                          {holidayType.name}
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                )}
 
                 {link.href === "#destinations" && (
                   <ul className="mt-4 flex flex-col gap-3 pl-4">

@@ -5,9 +5,10 @@ export interface NavLinkItem {
 
 export const navLinks: NavLinkItem[] = [
   { href: "#home", label: "Home" },
-  { href: "#about", label: "About" },
+  { href: "/about", label: "About" },
   { href: "#holiday-types", label: "Types of Holiday" },
   { href: "#destinations", label: "Destinations" },
-  { href: "#gallery", label: "Gallery" },
-  { href: "#contact", label: "Contact" },
+  { href: "/gallery", label: "Gallery" },
+  { href: "/testimonials", label: "Testimonials" },
+  { href: "/contact", label: "Contact" },
 ];

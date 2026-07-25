@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { PageScrollbar } from "@/components/common/PageScrollbar";
 import { woodland } from "@/lib/fonts";
+import { TripPlanProvider } from "@/lib/TripPlanContext";
 
 export const metadata: Metadata = {
   title: "Blissful Escapes | Luxury Travel, Personally Planned",
@@ -17,8 +18,10 @@ export default function RootLayout({
   return (
     <html lang="en" className={`h-full antialiased ${woodland.variable}`}>
       <body className="min-h-full flex flex-col font-sans">
-        {children}
-        <PageScrollbar />
+        <TripPlanProvider>
+          {children}
+          <PageScrollbar />
+        </TripPlanProvider>
       </body>
     </html>
   );

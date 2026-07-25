@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import type { MouseEvent } from "react";
 import { smoothScrollTo } from "@/lib/smoothScrollTo";
 
@@ -13,12 +14,18 @@ export interface NavLinkProps {
 }
 
 export function NavLink({ href, label, tone = "brown", className = "", onNavigate }: Readonly<NavLinkProps>) {
+  const pathname = usePathname();
   const idleColor = tone === "brown" ? "text-primary-navy" : "text-white";
   const hoverColor = tone === "brown" ? "hover:text-primary-sky" : "hover:text-primary-gold";
   const underlineColor = tone === "brown" ? "bg-primary-navy" : "bg-primary-gold";
 
+  // Hash links only scroll in place on the homepage — anywhere else, fall
+  // through to a normal navigation to "/" + hash so the target still exists.
+  const isHomepage = pathname === "/";
+  const resolvedHref = href.startsWith("#") && !isHomepage ? `/${href}` : href;
+
   const handleClick = (event: MouseEvent<HTMLAnchorElement>) => {
-    if (href.startsWith("#")) {
+    if (href.startsWith("#") && isHomepage) {
       event.preventDefault();
       smoothScrollTo(href.slice(1));
     }
@@ -27,7 +34,7 @@ export function NavLink({ href, label, tone = "brown", className = "", onNavigat
 
   return (
     <Link
-      href={href}
+      href={resolvedHref}
       onClick={handleClick}
       className={`group relative inline-flex items-center py-1 text-sm font-medium tracking-wide transition-colors duration-200 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary-navy ${idleColor} ${hoverColor} ${className}`}
     >

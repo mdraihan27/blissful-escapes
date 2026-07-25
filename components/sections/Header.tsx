@@ -8,6 +8,20 @@ import { NavDropdown } from "@/components/common/NavDropdown";
 import { IconButton } from "@/components/ui/IconButton";
 import { MobileMenuPanel } from "@/components/common/MobileMenuPanel";
 import { navLinks } from "@/lib/navLinks";
+import { destinationDetails } from "@/lib/destinationDetails";
+import { holidayTypeDetails } from "@/lib/holidayTypeDetails";
+
+const destinationDropdownItems = destinationDetails.map((destination) => ({
+  href: `/destinations/${destination.slug}`,
+  title: destination.name,
+  subtitle: destination.region,
+  imageSrc: destination.heroImage,
+}));
+
+const holidayTypeDropdownItems = holidayTypeDetails.map((holidayType) => ({
+  href: `/holidays/${holidayType.slug}`,
+  title: holidayType.name,
+}));
 
 export function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -26,13 +40,32 @@ export function Header() {
           <Logo tone="cream" />
 
           <nav className="hidden md:flex md:items-center md:gap-7 lg:gap-9">
-            {navLinks.map((link) =>
-              link.href === "#destinations" ? (
-                <NavDropdown key={link.href} href={link.href} label={link.label} tone="cream" />
-              ) : (
-                <NavLink key={link.href} href={link.href} label={link.label} tone="cream" />
-              )
-            )}
+            {navLinks.map((link) => {
+              if (link.href === "#destinations") {
+                return (
+                  <NavDropdown
+                    key={link.href}
+                    href={link.href}
+                    label={link.label}
+                    items={destinationDropdownItems}
+                    tone="cream"
+                  />
+                );
+              }
+              if (link.href === "#holiday-types") {
+                return (
+                  <NavDropdown
+                    key={link.href}
+                    href={link.href}
+                    label={link.label}
+                    items={holidayTypeDropdownItems}
+                    columns={2}
+                    tone="cream"
+                  />
+                );
+              }
+              return <NavLink key={link.href} href={link.href} label={link.label} tone="cream" />;
+            })}
           </nav>
 
           <IconButton

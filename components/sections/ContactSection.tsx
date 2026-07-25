@@ -243,14 +243,13 @@ export function ContactSection() {
               </FormField>
             </div>
 
-            <div className="flex flex-col gap-4 sm:col-span-2 sm:flex-row sm:items-start sm:justify-between">
-              <p
-                aria-live="polite"
-                className={`text-sm text-primary-navy transition-opacity duration-200 ${showPrompt ? "opacity-100" : "opacity-0"}`}
-              >
-                Could you pop in your name and email? I just need those two to get back to you.
-              </p>
-              <Button type="submit" fullWidthOnMobile className="sm:shrink-0">
+            <div className="sm:col-span-2 flex flex-col items-center justify-center gap-3 text-center pt-2">
+              {showPrompt && (
+                <p aria-live="polite" className="text-sm text-primary-navy">
+                  Could you pop in your name and email? I just need those two to get back to you.
+                </p>
+              )}
+              <Button type="submit" className="mx-auto">
                 Send my travel details
               </Button>
             </div>
@@ -262,7 +261,7 @@ export function ContactSection() {
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="mt-12 flex flex-col gap-3 sm:flex-row sm:gap-10"
+            className="mt-12 flex flex-col gap-3 sm:flex-row sm:gap-10 sm:justify-center"
           >
             <a
               href="mailto:enquiries@blissfulescapes.co.uk"

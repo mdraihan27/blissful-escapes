@@ -8,11 +8,10 @@ import { GallerySection } from "@/components/sections/GallerySection";
 import { TestimonialsSection } from "@/components/sections/TestimonialsSection";
 import { ContactSection } from "@/components/sections/ContactSection";
 import { Footer } from "@/components/sections/Footer";
-import { TripPlanProvider } from "@/lib/TripPlanContext";
 
 export default function Home() {
   return (
-    <TripPlanProvider>
+    <>
       <Header />
       <main className="flex-1">
         <HeroSection />
@@ -25,6 +24,6 @@ export default function Home() {
         <ContactSection />
       </main>
       <Footer />
-    </TripPlanProvider>
+    </>
   );
 }

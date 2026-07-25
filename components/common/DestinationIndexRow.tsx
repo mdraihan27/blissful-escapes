@@ -19,7 +19,6 @@ export interface DestinationIndexRowProps {
 export function DestinationIndexRow({
   slug,
   name,
-  region,
   tagline,
   imageSrc,
   imageAlt,
@@ -47,22 +46,19 @@ export function DestinationIndexRow({
           </span>
 
           <div className="min-w-0 flex-1">
-            <div className="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-1">
+            <div className="flex items-center justify-between gap-x-6">
               <h3
-                className={`text-3xl font-semibold tracking-tight transition-transform duration-300 ease-out sm:text-4xl lg:text-5xl ${
-                  isActive ? "text-primary-navy sm:translate-x-2" : "text-primary-sky"
+                className={`text-3xl font-semibold tracking-tight transition-colors duration-300 ease-out sm:text-4xl lg:text-5xl ${
+                  isActive ? "text-primary-navy" : "text-primary-sky/75 group-hover:text-primary-navy"
                 }`}
               >
                 {name}
               </h3>
-              <span className="text-xs font-semibold uppercase tracking-[0.2em] text-primary-sky">
-                {region}
-              </span>
             </div>
 
             {/* Mobile only: inline image + tagline preview */}
             <div className="mt-4 lg:hidden">
-              <div className="relative aspect-16/9 w-full overflow-hidden">
+              <div className="relative aspect-16/9 w-full overflow-hidden rounded-sm">
                 <Image
                   src={imageSrc}
                   alt={imageAlt}
@@ -72,17 +68,17 @@ export function DestinationIndexRow({
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-primary-navy/70 to-transparent" />
               </div>
-              <p className="mt-3 text-sm text-primary-sky">{tagline}</p>
+              <p className="mt-3 text-sm text-primary-navy/80 leading-relaxed">{tagline}</p>
             </div>
 
-            {/* Desktop: tagline reveals on active */}
+            {/* Desktop: tagline reveals cleanly on active */}
             <div
               className={`hidden grid-rows-[0fr] transition-[grid-template-rows] duration-500 ease-out lg:grid ${
                 isActive ? "lg:grid-rows-[1fr]" : ""
               }`}
             >
               <div className="overflow-hidden">
-                <p className="mt-3 max-w-md text-base text-primary-sky">{tagline}</p>
+                <p className="mt-2.5 max-w-xl text-base text-primary-navy/80 leading-relaxed">{tagline}</p>
               </div>
             </div>
           </div>
@@ -103,10 +99,10 @@ export function DestinationIndexRow({
           </span>
         </div>
 
-        {/* Divider via spacing + subtle contrast, not a border */}
+        {/* Divider line */}
         <div
-          className={`mt-6 h-px w-full origin-left scale-x-100 transition-transform duration-500 ease-out sm:mt-7 ${
-            isActive ? "bg-primary-navy" : "bg-primary-sky"
+          className={`mt-6 h-px w-full origin-left transition-colors duration-300 sm:mt-7 ${
+            isActive ? "bg-primary-navy" : "bg-primary-sky/40"
           }`}
         />
       </Link>

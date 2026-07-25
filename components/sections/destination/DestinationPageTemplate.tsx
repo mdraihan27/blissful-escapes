@@ -1,5 +1,5 @@
+import { Header } from "@/components/sections/Header";
 import { Footer } from "@/components/sections/Footer";
-import { DestinationPageHeader } from "@/components/sections/destination/DestinationPageHeader";
 import { DestinationHero } from "@/components/sections/destination/DestinationHero";
 import { DestinationIntro } from "@/components/sections/destination/DestinationIntro";
 import { DestinationHighlights } from "@/components/sections/destination/DestinationHighlights";
@@ -15,7 +15,7 @@ export interface DestinationPageTemplateProps {
 export function DestinationPageTemplate({ destination }: Readonly<DestinationPageTemplateProps>) {
   return (
     <>
-      <DestinationPageHeader />
+      <Header />
       <main className="flex-1">
         <DestinationHero
           name={destination.name}

@@ -175,7 +175,7 @@ export const destinationDetails: DestinationDetail[] = [
     ],
     gallery: [
       { src: "/assets/images/hero/dubai-palm-jumeirah-aerial.jpg", alt: "Palm Jumeirah from above" },
-      { src: "/assets/images/banner/abu-dhabi-mosque-banner.jpg", alt: "The Grand Mosque in Abu Dhabi" },
+      { src: "/assets/images/banner/dubai-header-banner.jpg", alt: "The Grand Mosque in Abu Dhabi" },
       { src: "/assets/images/banner/misty-mountains-sunrise-banner.jpg", alt: "Mist over mountains at sunrise" },
       { src: "/assets/images/banner/maldivian-air-taxi-banner.jpg", alt: "Seaplane over turquoise water" },
     ],
@@ -236,3 +236,4 @@ export const destinationDetails: DestinationDetail[] = [
 export function getDestinationDetail(slug: string): DestinationDetail | undefined {
   return destinationDetails.find((destination) => destination.slug === slug);
 }
+

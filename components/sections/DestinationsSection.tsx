@@ -37,15 +37,15 @@ export function DestinationsSection() {
               <Link
                 href={`/destinations/${active.slug}`}
                 aria-label={`Explore ${active.name}`}
-                className="group relative block aspect-4/5 overflow-hidden focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary-navy"
+                className="group relative block aspect-4/5 overflow-hidden focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary-navy shadow-md"
               >
-                <AnimatePresence>
+                <AnimatePresence mode="wait">
                   <motion.div
                     key={active.slug}
-                    initial={{ opacity: 0, scale: 1.06 }}
+                    initial={{ opacity: 0, scale: 1.05 }}
                     animate={{ opacity: 1, scale: 1 }}
                     exit={{ opacity: 0 }}
-                    transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+                    transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
                     className="absolute inset-0"
                   >
                     <Image
@@ -58,20 +58,23 @@ export function DestinationsSection() {
                   </motion.div>
                 </AnimatePresence>
 
-                <div className="absolute inset-0 bg-gradient-to-t from-primary-navy via-primary-navy/40 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-primary-navy/90 via-primary-navy/30 to-transparent" />
 
                 <div className="absolute bottom-0 left-0 right-0 p-8">
                   <motion.div
                     key={active.slug}
-                    initial={{ opacity: 0, y: 16 }}
+                    initial={{ opacity: 0, y: 14 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5, delay: 0.1, ease: "easeOut" }}
+                    transition={{ duration: 0.45, delay: 0.1, ease: "easeOut" }}
                   >
                     <p className="text-xs font-semibold uppercase tracking-[0.25em] text-primary-gold">
-                      {active.region}
+                      Explore Region
                     </p>
-                    <p className="mt-3 text-4xl font-semibold italic tracking-tight text-white">
+                    <p className="mt-2 text-3xl font-semibold italic tracking-tight text-white sm:text-4xl">
                       {active.name}
+                    </p>
+                    <p className="mt-2 text-sm leading-relaxed text-primary-cream">
+                      {active.tagline}
                     </p>
                   </motion.div>
                 </div>

@@ -3,21 +3,40 @@
 import { useRef, useState, type MouseEvent } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { smoothScrollTo } from "@/lib/smoothScrollTo";
-import { destinationDetails } from "@/lib/destinationDetails";
+
+export interface NavDropdownItem {
+  href: string;
+  title: string;
+  subtitle?: string;
+  imageSrc?: string;
+}
 
 export interface NavDropdownProps {
   label: string;
   /** Hash target scrolled to when the label itself is clicked, e.g. "#destinations" */
   href: string;
+  items: NavDropdownItem[];
+  /** Panel columns, use 2 for long text only lists */
+  columns?: 1 | 2;
   tone?: "brown" | "cream";
 }
 
-export function NavDropdown({ label, href, tone = "brown" }: Readonly<NavDropdownProps>) {
+export function NavDropdown({
+  label,
+  href,
+  items,
+  columns = 1,
+  tone = "brown",
+}: Readonly<NavDropdownProps>) {
   const [isOpen, setIsOpen] = useState(false);
   const closeTimeoutRef = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
   const shouldReduceMotion = useReducedMotion();
+  const pathname = usePathname();
+  const isHomepage = pathname === "/";
+  const resolvedHref = href.startsWith("#") && !isHomepage ? `/${href}` : href;
   const idleColor = tone === "brown" ? "text-primary-navy" : "text-white";
   const hoverColor = tone === "brown" ? "hover:text-primary-sky" : "hover:text-primary-gold";
   const underlineColor = tone === "brown" ? "bg-primary-navy" : "bg-primary-gold";
@@ -43,7 +62,7 @@ export function NavDropdown({ label, href, tone = "brown" }: Readonly<NavDropdow
       open();
       return;
     }
-    if (href.startsWith("#")) {
+    if (href.startsWith("#") && isHomepage) {
       event.preventDefault();
       smoothScrollTo(href.slice(1));
     }
@@ -53,7 +72,7 @@ export function NavDropdown({ label, href, tone = "brown" }: Readonly<NavDropdow
   return (
     <div className="relative" onMouseEnter={open} onMouseLeave={scheduleClose}>
       <Link
-        href={href}
+        href={resolvedHref}
         onClick={handleLabelClick}
         onFocus={open}
         aria-expanded={isOpen}
@@ -82,27 +101,33 @@ export function NavDropdown({ label, href, tone = "brown" }: Readonly<NavDropdow
             transition={{ duration: 0.18, ease: "easeOut" }}
             onMouseEnter={open}
             onMouseLeave={scheduleClose}
-            className="absolute left-1/2 top-[calc(100%+0.75rem)] z-40 w-72 -translate-x-1/2 bg-white p-2 shadow-[0_20px_60px_rgba(39,73,87,0.18)]"
+            className={`absolute left-1/2 top-[calc(100%+0.75rem)] z-40 -translate-x-1/2 bg-white p-2 shadow-[0_20px_60px_rgba(39,73,87,0.18)] ${
+              columns === 2 ? "grid w-120 grid-cols-2 gap-x-2" : "w-72"
+            }`}
           >
-            {destinationDetails.map((destination) => (
+            {items.map((item) => (
               <Link
-                key={destination.slug}
-                href={`/destinations/${destination.slug}`}
+                key={item.href}
+                href={item.href}
                 onClick={() => setIsOpen(false)}
                 className="group flex items-center gap-3 p-2 transition-colors duration-150 hover:bg-primary-cream focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-navy"
               >
-                <span className="relative h-12 w-16 shrink-0 overflow-hidden">
-                  <Image
-                    src={destination.heroImage}
-                    alt=""
-                    fill
-                    sizes="64px"
-                    className="object-cover transition-transform duration-500 ease-out group-hover:scale-110"
-                  />
-                </span>
+                {item.imageSrc && (
+                  <span className="relative h-12 w-16 shrink-0 overflow-hidden">
+                    <Image
+                      src={item.imageSrc}
+                      alt=""
+                      fill
+                      sizes="64px"
+                      className="object-cover transition-transform duration-500 ease-out group-hover:scale-110"
+                    />
+                  </span>
+                )}
                 <span className="min-w-0">
-                  <span className="block text-sm font-semibold text-primary-navy">{destination.name}</span>
-                  <span className="block truncate text-xs text-primary-sky">{destination.region}</span>
+                  <span className="block text-sm font-semibold text-primary-navy">{item.title}</span>
+                  {item.subtitle && (
+                    <span className="block truncate text-xs text-primary-sky">{item.subtitle}</span>
+                  )}
                 </span>
               </Link>
             ))}

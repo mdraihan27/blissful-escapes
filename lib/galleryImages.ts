@@ -15,7 +15,7 @@ export const galleryImages: GalleryImage[] = [
   { src: "/assets/images/hero/elephants-crossing-river.jpeg", alt: "Herd of elephants crossing a river in Africa", aspectRatio: "wide" },
   { src: "/assets/images/banner/venice-aerial-canal-banner.jpg", alt: "Aerial view of Venice canals and historic buildings", aspectRatio: "tall" },
   { src: "/assets/images/banner/machu-picchu-sunrise-banner.jpg", alt: "Machu Picchu citadel at sunrise with mist rising from the valley", aspectRatio: "square" },
-  { src: "/assets/images/hero/turkey-oludeniz-lagoon.jpg", alt: "The famous Blue Lagoon at Oludeniz, Turkey, seen from above", aspectRatio: "wide" },
+  { src: "/assets/images/banner/great-barrier-reef-banner.jpg", alt: "Aerial view of the coral formations of the Great Barrier Reef", aspectRatio: "wide" },
   { src: "/assets/images/hero/antalya-coast-paraglider.jpeg", alt: "Paraglider soaring above the turquoise Antalya coast, Turkey", aspectRatio: "square" },
   { src: "/assets/images/banner/lake-agios-nikolaos-crete-banner.jpg", alt: "Lake Voulismeni in Agios Nikolaos, Crete, with colourful waterfront buildings", aspectRatio: "tall" },
   { src: "/assets/images/banner/seychelles-palm-beach-banner.jpg", alt: "Pristine palm fringed beach in the Seychelles", aspectRatio: "square" },
@@ -23,3 +23,4 @@ export const galleryImages: GalleryImage[] = [
   { src: "/assets/images/banner/golden-gate-bridge-sunset-banner.jpg", alt: "Golden Gate Bridge at sunset, San Francisco", aspectRatio: "square" },
   { src: "/assets/images/hero/antigua-aerial-harbor.jpg", alt: "Aerial view of Antigua harbour with yachts at anchor", aspectRatio: "square" },
 ];
+
